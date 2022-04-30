@@ -22,6 +22,7 @@ int main() {
 
     while (true) {
       outStudentFile << st1.getMatricula() << ' ' << st1.getDepart() << ' ' << st1.getName() << st1.getCredits() << endl;
+      break;
    }
     return 0;
 }
