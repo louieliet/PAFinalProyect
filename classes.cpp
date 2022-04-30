@@ -7,7 +7,7 @@ private:
     char name[20], department[20];
     int matricula, credits;
 public:
-    Student(int matricula,char name[20],char department[] ,int credits)
+    Student(int matricula,char name[20],char department[20] ,int credits)
     {
         this->matricula=matricula;
         *this->name=*name;
