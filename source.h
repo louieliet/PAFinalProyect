@@ -19,11 +19,12 @@ public:
         string n,f;
         
         system("cls");
-        
         cout << "\t- Student -" << endl;
         cout << "Matricula, Nombre, Facultad, Creditos" << endl;
         cin >> m >> n >> f >> c;
         setStudent(m,n,f,c);
+        system("cls");
+        cout << "Student registered succesfuly!";
     }
 
     void setStudent(int matricula, string name, string department, int credits) 
@@ -35,6 +36,13 @@ public:
     }
 
     void outStudent(ofstream& file) { file << matricula << " " << name << " " << department << " " << credits;}
+
+    char* stringtochar(string _name)
+    {      
+        string name=_name;
+        char* c = const_cast<char*>(name.c_str());
+        return c;
+    }
 };
 
 class Takes
