@@ -5,36 +5,46 @@ using namespace std;
 class Student
 {
 private:    
-    char name[20], department[20];
+    string name, department;
     int matricula, credits;
 public:
-    void registerStudent(int matricula,const string& name,const string& department,int credits) 
+    void registerStudent() 
     {
-        setMatricula(matricula);
-        setName(name);
-        setDepart(department);
-        setCredits(credits);
-        
+        string nombre, facultad;
+        int matricula, creditos;
+        system("cls");
+        cout << " -Register Student- " << endl;
+        cout << "- Matricula - " << endl;
+        cin >> matricula;
+        cout << "- Nombre - " << endl;
+        cin >> nombre;
+        cout << "- Facultad - " << endl;
+        cin >> facultad;
+        cout << "- Creditos - " << endl;
+        cin >> creditos;
+
+        setStudent(matricula,nombre,facultad,creditos);
+        system("cls");
+
+    }
+    void setStudent(int matricula, string name, string department, int credits)
+    {
+        this->matricula=matricula;
+        this->name=name;
+        this->department=department;
+        this->credits=credits;
+
     }
     void setCredits(int credits) {this->credits=credits;}
     void setMatricula(int matricula){this->matricula=matricula;}
     void setName(const string& namestring)
     {
-        size_t length{namestring.size()};
-        length = (length<20 ? length : 19);
-        namestring.copy(name,length);
-        name[length] = '\0';
     }
     void setDepart(const string& departmentstring)
     {
-        size_t length{departmentstring.size()};
-        length = (length<20 ? length : 19);
-        departmentstring.copy(name,length);
-        department[length] = '\0';
-
     }
-    char* getName() {return name;}
-    char* getDepart() {return department;}
+    char getName() {return name;}
+    char getDepart() {return department;}
     int getCredits() {return credits;}
     int getMatricula() const {return matricula;}
 };

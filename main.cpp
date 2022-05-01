@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int main() {
@@ -18,22 +19,18 @@ int main() {
 
     cout << "Numero de estudiantes: " << endl;
     cin >> nalumn;
-    Student* arraystudents = new Student[nalumn];
+    Student* studentList = new Student[nalumn];
 
-    for(int i=0; i<nalumn; i++)
+    for(int i{0};i<nalumn;i++)
     {
-        string name=" ", dept=" ";
-        int tuition{0}, credits{0};
-
-        cout << "Ingrese los datos del estudiante [" << i+1 << "] en el orden correspondiente: (Matricula, Nombre, Facultad, Creditos) "<< endl;
-        cin >> tuition >> name >> dept >> credits;
-        arraystudents[i].registerStudent(tuition,name,dept,credits);
+        studentList[i].registerStudent();
     }
+    
+
 
     
-    for(int i=0; i<=nalumn; i++) {
-        cout<< arraystudents[i].getMatricula() << arraystudents[i].getName() << arraystudents[i].getDepart() << arraystudents[i].getCredits();
-    }
+
+
 
     return 0;
 }
