@@ -7,7 +7,7 @@ using namespace std;
 class Student{
     
 private:    
-    string name, department;
+    char* name, department;
     int matricula, credits;
 public:
     Student(){};
@@ -30,8 +30,8 @@ public:
     void setStudent(int matricula, string name, string department, int credits) 
     {
         this->matricula=matricula;
-        this->name=name;
-        this->department=department;
+        this->name=stringtochar(name);
+        this->department=stringtochar(department);
         this->credits=credits;
     }
 
