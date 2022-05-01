@@ -7,9 +7,8 @@ class Student
 private:    
     char name[20], department[20];
     int matricula, credits;
-
 public:
-    Student(int matricula,const string& name,const string& department,int credits)
+    void registerStudent(int matricula,const string& name,const string& department,int credits) 
     {
         setMatricula(matricula);
         setName(name);
@@ -17,11 +16,8 @@ public:
         setCredits(credits);
         
     }
-
+    void setCredits(int credits) {this->credits=credits;}
     void setMatricula(int matricula){this->matricula=matricula;}
-
-    int getMatricula() const {return matricula;}
-
     void setName(const string& namestring)
     {
         size_t length{namestring.size()};
@@ -29,9 +25,6 @@ public:
         namestring.copy(name,length);
         name[length] = '\0';
     }
-
-    char* getName() {return name;}
-    
     void setDepart(const string& departmentstring)
     {
         size_t length{departmentstring.size()};
@@ -40,13 +33,10 @@ public:
         department[length] = '\0';
 
     }
-
+    char* getName() {return name;}
     char* getDepart() {return department;}
-
-    void setCredits(int credits) {this->credits=credits;}
-
     int getCredits() {return credits;}
-    
+    int getMatricula() const {return matricula;}
 };
 
 class Takes
@@ -58,3 +48,4 @@ class Course
 {
 
 };
+

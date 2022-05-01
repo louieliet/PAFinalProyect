@@ -1,4 +1,4 @@
-#include "classes.h"
+#include "source.h"
 #include <fstream>
 #include <cstdlib>
 #include <iostream>
@@ -13,16 +13,27 @@ int main() {
         exit(EXIT_FAILURE);
     };
 
-    string name, dept;
-    int tuition, credits;
+    int nalumn{0};
+    bool out = true;
 
-    cin >> name >> dept >> tuition >> credits;
+    cout << "Numero de estudiantes: " << endl;
+    cin >> nalumn;
+    Student* arraystudents = new Student[nalumn];
 
-    Student st1(tuition,dept,name,credits);
+    for(int i=0; i<nalumn; i++)
+    {
+        string name=" ", dept=" ";
+        int tuition{0}, credits{0};
 
-    while (true) {
-      outStudentFile << st1.getMatricula() << ' ' << st1.getDepart() << ' ' << st1.getName() << st1.getCredits() << endl;
-      break;
-   }
+        cout << "Ingrese los datos del estudiante [" << i+1 << "] en el orden correspondiente: (Matricula, Nombre, Facultad, Creditos) "<< endl;
+        cin >> tuition >> name >> dept >> credits;
+        arraystudents[i].registerStudent(tuition,name,dept,credits);
+    }
+
+    
+    for(int i=0; i<=nalumn; i++) {
+        cout<< arraystudents[i].getMatricula() << arraystudents[i].getName() << arraystudents[i].getDepart() << arraystudents[i].getCredits();
+    }
+
     return 0;
 }
