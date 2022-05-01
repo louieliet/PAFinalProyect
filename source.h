@@ -1,52 +1,22 @@
 #include <iostream>
 #include <string>
+#include <fstream> 
+#include <cstdlib>
+#include <vector>
 using namespace std;
-
-class Student
-{
+class Student{
+    
 private:    
     string name, department;
     int matricula, credits;
 public:
-    void registerStudent() 
-    {
-        string nombre, facultad;
-        int matricula, creditos;
-        system("cls");
-        cout << " -Register Student- " << endl;
-        cout << "- Matricula - " << endl;
-        cin >> matricula;
-        cout << "- Nombre - " << endl;
-        cin >> nombre;
-        cout << "- Facultad - " << endl;
-        cin >> facultad;
-        cout << "- Creditos - " << endl;
-        cin >> creditos;
-
-        setStudent(matricula,nombre,facultad,creditos);
-        system("cls");
-
+    Student(int matricula, string name, string department, int credits) {
+    this->matricula=matricula;
+    this->name=name;
+    this->department=department;
+    this->credits=credits;
     }
-    void setStudent(int matricula, string name, string department, int credits)
-    {
-        this->matricula=matricula;
-        this->name=name;
-        this->department=department;
-        this->credits=credits;
-
-    }
-    void setCredits(int credits) {this->credits=credits;}
-    void setMatricula(int matricula){this->matricula=matricula;}
-    void setName(const string& namestring)
-    {
-    }
-    void setDepart(const string& departmentstring)
-    {
-    }
-    char getName() {return name;}
-    char getDepart() {return department;}
-    int getCredits() {return credits;}
-    int getMatricula() const {return matricula;}
+    void outStudent(ofstream& file) { file << matricula << " " << name << " " << department << " " << credits;}
 };
 
 class Takes

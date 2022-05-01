@@ -1,9 +1,4 @@
 #include "source.h"
-#include <fstream>
-#include <cstdlib>
-#include <iostream>
-#include <vector>
-using namespace std;
 
 int main() {
 
@@ -14,23 +9,15 @@ int main() {
         exit(EXIT_FAILURE);
     };
 
-    int nalumn{0};
-    bool out = true;
-
-    cout << "Numero de estudiantes: " << endl;
-    cin >> nalumn;
-    Student* studentList = new Student[nalumn];
-
-    for(int i{0};i<nalumn;i++)
-    {
-        studentList[i].registerStudent();
+    Student s1(123,"Emi","Ing",10);
+    Student s2(456, "Liz", "Ing", 20);
+    vector<Student> list;
+    list.push_back(s1);
+    list.push_back(s2);
+    
+    for(auto i: list){
+        i.outStudent(outStudentFile);
     }
-    
-
-
-    
-
-
 
     return 0;
 }
