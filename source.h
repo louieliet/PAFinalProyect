@@ -3,11 +3,12 @@
 #include <fstream> 
 #include <cstdlib>
 #include <vector>
+#include <cstring>
 using namespace std;
 class Student{
     
 private:    
-    char* name, department;
+    string name, department;
     int matricula, credits;
 public:
     Student(){};
@@ -40,7 +41,8 @@ public:
     char* stringtochar(string _name)
     {      
         string name=_name;
-        char* c = const_cast<char*>(name.c_str());
+        char c[name.size()+1];
+        strcpy(c,name.c_str());
         return c;
     }
 };
