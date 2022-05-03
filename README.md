@@ -89,3 +89,21 @@ la clase debe tener los getters y setters, y debe ser const
         bla bla bla
       }
   }
+
+  Segundo archivo:
+
+  class Materias
+  {
+    materia, calificacion
+  }
+
+  Tercer archivo:
+
+  class Materia
+  {
+    nombre, clave
+  }
+
+
+  Dame matricula: buscamos el indice en el otro archivo, buscamos el registro 5, donde dirá el nombre completo y calificación de 
+  todas las materias y su clave de materia, y en el otro archivo buscamos el nombre completo de la materia
