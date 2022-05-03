@@ -109,3 +109,5 @@ la clase debe tener los getters y setters, y debe ser const
   todas las materias y su clave de materia, y en el otro archivo buscamos el nombre completo de la materia
 
   indice -> indice.dat
+
+  textpad
