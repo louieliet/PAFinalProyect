@@ -59,3 +59,12 @@ captiulo 14, control de cuentas bancarias
 Grupo de Programación Avanzada
 13 estudiantes
 
+
+Clase que tenga dos atributos: 1. Matricula[] 2. Indice (int) (tiene que ir de 0-99, el estudiante
+puede tener el indicie que desee, no tiene que ser secuencial)
+
+la clase debe tener los getters y setters, y debe ser const
+  array = {1,2,3,4,5,6,7,8,9}
+
+
+  reinterpret_cast<>()  reinterpreta esto() como esto <>

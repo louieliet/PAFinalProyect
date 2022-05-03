@@ -8,42 +8,51 @@ using namespace std;
 class Student{
     
 private:    
-    string name, department;
+    char fname[15], lname[10], department[3];
     int matricula, credits;
 public:
     Student(){};
     ~Student(){};
 
-    void registerStudent()
-    {
+    void registerStudent(){
         int m,c;
-        string n,f;
+        string fn,ln,f;
         
         cout << "\t- Student  -" << endl;
-        cout << "Matricula, Nombre, Facultad, Creditos" << endl;
-        cin >> m >> n >> f >> c;
-        setStudent(m,n,f,c);
+        cout << "Matricula, Nombre, Apellido, Facultad, Creditos" << endl;
+        cin >> m >> fn >> ln >> f >> c;
+        
         system("cls");
         cout << "Student registered succesfuly!";
     }
 
-    void setStudent(int matricula, string name, string department, int credits) 
+    void setFirstName(const string& FirstName){
+        size_t length{FirstName.size()};
+        length = (length < 15 ? length : 14);
+        FirstName.copy(fname, length);
+        fname[length] = '\0';
+    }
+    void setLastName(const string& LastName)
     {
-        this->matricula=matricula;
-        this->name=name;
-        this->department=department;
+        size_t length{LastName.size()};
+        length = (length < 10 ? length : 9);
+        LastName.copy(lname, length);
+        lname[length] = '\0';
+    }
+    void setDepartment(const string& Department)
+    {
+        size_t length{Department.size()};
+        length = (length < 3 ? length : 2);
+        Department.copy(lname, length);
+        department[length] = '\0';
+    }
+    void setInts(int tuition, int credits)
+    {
+        matricula=tuition;
         this->credits=credits;
     }
 
-    void outStudent(ofstream& file) { file << matricula << " " << name << " " << department << " " << credits;}
-
-    char* stringtochar(string _name)
-    {      
-        string name=_name;
-        char c[name.size()+1];
-        strcpy(c,name.c_str());
-        return c;
-    }
+    void outStudent(ofstream& file) { file << matricula << " " << fname << lname << " " << department << " " << credits;}    
 };
 
 class Takes
