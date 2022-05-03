@@ -82,6 +82,10 @@ la clase debe tener los getters y setters, y debe ser const
     public:
       IndiceEstudiante(int=0, const string& = " ");
       this->indice=indice;
-      this->matricula=matricula;
-      
+      this->matricula=setMatricula(" ");
+
+      void setMatricula ()
+      {
+        bla bla bla
+      }
   }
