@@ -21,7 +21,10 @@ public:
         cout << "\t- Student  -" << endl;
         cout << "Matricula, Nombre, Apellido, Facultad, Creditos" << endl;
         cin >> m >> fn >> ln >> f >> c;
-        
+        setInts(m,c);
+        setFirstName(fn);
+        setLastName(ln);
+        setDepartment(f);
         system("cls");
         cout << "Student registered succesfuly!";
     }

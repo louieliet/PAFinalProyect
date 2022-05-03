@@ -68,3 +68,9 @@ la clase debe tener los getters y setters, y debe ser const
 
 
   reinterpret_cast<>()  reinterpreta esto() como esto <>
+
+  indice.data{matricula char[4], int}
+
+  0 00 0 00  000 
+
+  100 veces (esto me da la matricula y el indice, con el que voy a encontrar al alumno en otro archivo)
