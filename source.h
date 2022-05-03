@@ -8,7 +8,7 @@ using namespace std;
 class Student{
     
 private:    
-    char fname[15], lname[10], department[3];
+    char fname[15], lname[10], department[7];
     int matricula, credits;
 public:
     Student(){};
@@ -45,7 +45,7 @@ public:
     void setDepartment(const string& Department)
     {
         size_t length{Department.size()};
-        length = (length < 3 ? length : 2);
+        length = (length < 7 ? length : 6);
         Department.copy(lname, length);
         department[length] = '\0';
     }

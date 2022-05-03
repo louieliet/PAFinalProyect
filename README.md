@@ -74,3 +74,14 @@ la clase debe tener los getters y setters, y debe ser const
   0 00 0 00  000 
 
   100 veces (esto me da la matricula y el indice, con el que voy a encontrar al alumno en otro archivo)
+
+  Example:
+
+  class IndiceEstudiante
+  {
+    public:
+      IndiceEstudiante(int=0, const string& = " ");
+      this->indice=indice;
+      this->matricula=matricula;
+      
+  }
