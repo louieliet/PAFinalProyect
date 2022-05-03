@@ -19,8 +19,7 @@ public:
         int m,c;
         string n,f;
         
-        system("cls");
-        cout << "\t- Student -" << endl;
+        cout << "\t- Student  -" << endl;
         cout << "Matricula, Nombre, Facultad, Creditos" << endl;
         cin >> m >> n >> f >> c;
         setStudent(m,n,f,c);
@@ -31,8 +30,8 @@ public:
     void setStudent(int matricula, string name, string department, int credits) 
     {
         this->matricula=matricula;
-        this->name=stringtochar(name);
-        this->department=stringtochar(department);
+        this->name=name;
+        this->department=department;
         this->credits=credits;
     }
 

@@ -45,3 +45,17 @@ output -> id emi lleva programación avanzada
 learning.oreilly
 
 binary file
+
+// Control escolar
+
+Estudiantes
+Datos
+Archivos (de acceso aleatorio)
+
+Random ac. files
+
+captiulo 14, control de cuentas bancarias
+
+Grupo de Programación Avanzada
+13 estudiantes
+

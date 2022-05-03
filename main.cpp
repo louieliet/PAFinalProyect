@@ -20,6 +20,7 @@ int main() {
         list[i].registerStudent();
         list[i].outStudent(outStudentFile);
     }
+    delete list;
     
     return 0;
 }
