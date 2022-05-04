@@ -111,3 +111,5 @@ la clase debe tener los getters y setters, y debe ser const
   indice -> indice.dat
 
   textpad
+
+  IndiceEstudiante(int indice=1,const string )
