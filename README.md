@@ -115,3 +115,7 @@ la clase debe tener los getters y setters, y debe ser const
   IndiceEstudiante(int indice=1,const string matricula )
 
 
+Escriba su indice 1
+Escriba su matricula
+Escriba el indice
+escribe la maricula

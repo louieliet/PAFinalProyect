@@ -45,6 +45,18 @@ public:
     LastName.copy(lname, length);
     lname[length] = '\0';
     }
-    void outStudent(ofstream& file) { file << matricula << " " << fname << lname << " " << department << " " << credits;}    
+
+    void outName(ofstream& file)
+    {
+        for(int i=0; i<15;i++)
+        {
+            file << fname[i];
+        }
+        for(int i=0; i<10;i++)
+        {
+            file << lname[i];
+        }
+        
+    }
 };
 

@@ -19,7 +19,7 @@ int main() {
     for(int i{0}; i<nalumn; i++)
     {
         list[i].registerStudent();
-        list[i].outStudent(outStudentFile);
+        list[i].outName(outStudentFile);
     }
     delete list;
     
