@@ -1,5 +1,5 @@
-#include "Header.h"
-#include "Student.cpp"
+#include "ProyectHeader.h"
+
 
 int main() {
 
