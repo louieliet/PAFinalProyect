@@ -58,13 +58,4 @@ public:
     void outStudent(ofstream& file) { file << matricula << " " << fname << lname << " " << department << " " << credits;}    
 };
 
-class Takes
-{
-
-};
-
-class Course
-{
-
-};
 
