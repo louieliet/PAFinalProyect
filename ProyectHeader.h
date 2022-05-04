@@ -14,7 +14,8 @@ private:
 public:
     Student(){};
     ~Student(){};
-    void registerStudent(){
+    void registerStudent()
+    {
     string fn,ln;
 
     cout << "\t- Student  -" << endl;
@@ -25,25 +26,26 @@ public:
     system("cls");
     cout << "Student registered succesfuly!";
     }
-    void setFirstName(const string & FirstName) {
-    size_t length {FirstName.size()};
-    length = (
-        length < 15
-            ? length
-            : 14
-    );
-    FirstName.copy(fname, length);
-    fname[length] = '\0';
+    void setFirstName(const string & FirstName) 
+    {
+        size_t length {FirstName.size()};
+        length = (
+            length < 15
+                ? length
+                : 14
+            );
+        FirstName.copy(fname, length);
+        fname[length] = '\0';
     }
     void setLastName(const string & LastName) {
-    size_t length {LastName.size()};
-    length = (
-        length < 10
-            ? length
-            : 9
-    );
-    LastName.copy(lname, length);
-    lname[length] = '\0';
+        size_t length {LastName.size()};
+        length = (
+            length < 10
+                ? length
+                : 9
+        );
+        LastName.copy(lname, length);
+        lname[length] = '\0';
     }
 
     void outName(ofstream& file)
