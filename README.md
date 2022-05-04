@@ -112,10 +112,23 @@ la clase debe tener los getters y setters, y debe ser const
 
   textpad
 
-  IndiceEstudiante(int indice=1,const string matricula )
+  IndiceEstudiante(int indice=4534,const string matricula = " 343242" )
+    el indice para verificar si realmente es un estudiante, el 4534 es el predeterminado,
+      si no tiene uno diferente, significa que no es realmente un alumo, así como la matricula
 
 
 Escriba su indice 1
 Escriba su matricula
 Escriba el indice
 escribe la maricula
+
+outIndice.flush();
+outIndice.close();
+ifstream inIndice{"indice.dat" , ios::in}
+
+Leemos el archivo
+
+cout << left << setw(10) "Matricula" setw(16) "indice"
+IndiceEstudiante estudiante
+inIndice.read()
+
