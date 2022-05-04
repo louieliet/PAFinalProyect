@@ -112,4 +112,4 @@ la clase debe tener los getters y setters, y debe ser const
 
   textpad
 
-  IndiceEstudiante(int indice=1,const string )
+  IndiceEstudiante(int indice=1,const string matricula )
