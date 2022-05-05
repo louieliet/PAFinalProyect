@@ -199,3 +199,5 @@ Calificación más alta de la materia:
 
   Programación avanzada 9.9
   Male Avanzada 8:30
+
+  Hash Function
