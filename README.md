@@ -182,3 +182,20 @@ Promedio de calificaciones de todos los estudiantes
 
 Giovanni Medellin   9.8
 Angel Esqueda   9.7
+
+
+
+Menu:
+  1. Crear los tres archivos (Exepción)
+  2. Calificaciones individuales
+  3. Promedio de calificaciones por estudiante
+  4. Calificacion más alta por materia
+  5. Salir
+
+Calificación más alta de la materia:
+  Materia
+  Nombre
+  Calificacion cs1,9; PA1,10
+
+  Programación avanzada 9.9
+  Male Avanzada 8:30
