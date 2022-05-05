@@ -132,3 +132,53 @@ cout << left << setw(10) "Matricula" setw(16) "indice"
 IndiceEstudiante estudiante
 inIndice.read()
 
+
+Indice // Matricula  1
+      |
+      |
+      |
+      |
+      |
+      |
+      |
+      |
+      |
+      |
+                    100
+
+Indice para cada matrícula
+
+5 opciones de menu: 
+  1. Genera los 3 archivos
+  2. Promedio más alto en una materia
+
+Debe tener 4 materias
+
+Nombre | 
+
+Estructura de las materias:
+3 caracteres 
+  PA1
+  MA1
+  DIN1
+  FI1           char[3]materia;
+                double calif;
+                
+materias.dat
+
+Nombre    |   materias, calif
+char[15]  |   calificaciones[4]
+
+
+PAI  | Programacion Avanzada (No se busca por índice)
+
+Imprime calificaciones de: 023401
+
+Juan Pablo tiene las sig. calificaciones:
+  Programación Avanzada 9.0
+  Materia...            10
+
+Promedio de calificaciones de todos los estudiantes
+
+Giovanni Medellin   9.8
+Angel Esqueda   9.7
