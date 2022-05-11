@@ -7,9 +7,9 @@ int main() {
 
     IndiceEstudiante Emiliano(5,"0241718");
     Emiliano.setIndice(13);
-    IndiceEstudiante Liz(5,"0241719");
+    IndiceEstudiante Liz(5,"0243165");
     Liz.setIndice(45);
-    IndiceEstudiante Ari(5,"0241720");
+    IndiceEstudiante Ari(5,"0246723");
     Ari.setIndice(3);
     IndiceEstudiante Angel(5,"0241721");
     Angel.setIndice(36);
