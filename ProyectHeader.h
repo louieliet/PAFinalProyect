@@ -1,11 +1,4 @@
-#include <iostream>
-#include <string>
-#include <fstream> 
-#include <cstdlib>
-#include <vector>
-#include <cstring>
-using namespace std;
-
+#include "Header.h"
 class Student
 {
 private:    

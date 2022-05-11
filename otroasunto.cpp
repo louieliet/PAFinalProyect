@@ -1,12 +1,10 @@
-// Fig. 14.10: Fig14_10.cpp
-
-// Creating a randomly accessed file.
+// Fig. 14.10: Fig14_10.cpp Creating a randomly accessed file.
 
 #include <iostream>
 
-#include <fstream>  
+#include <fstream>
 
-#include <cstdlib> 
+#include <cstdlib>
 
 #include "ClientData.h" // ClientData class definition
 
@@ -14,15 +12,12 @@
 
 using namespace std;
 
-
-
 int fig1410() {
 
-    
-
-    ofstream outIndice{ "indice.dat", ios::out | ios::binary };
-
-
+    ofstream outIndice {
+        "indice.dat",
+        ios::out | ios::binary
+    };
 
     // exit program if ofstream could not open file
 
@@ -34,91 +29,72 @@ int fig1410() {
 
     }
 
-
-
     IndiceEstudiante indiceEstudiante; // constructor zeros out each data member
 
     cout << sizeof(IndiceEstudiante) << endl;
 
-
-
     // output 100 blank records to file
 
-    for (int i{ 0 }; i < 100; ++i) {
+    for (int i {
+        0
+    }; i < 100; ++i) {
 
         outIndice.write(
 
-            reinterpret_cast<const char*>(&indiceEstudiante), sizeof(IndiceEstudiante));
+                reinterpret_cast < const char *> (& indiceEstudiante),
+                sizeof(IndiceEstudiante)
+            );
 
-    }
+        }
 
-   string matricula;
+        string matricula;
 
-    int indice;
+        int indice;
 
-    // Leer el indice para el estudiante
+        // Leer el indice para el estudiante Comprobar que es correcto y leer la
+        // matricula
 
+        cout << "Escriba su indice ";
 
+        cin >> indice; // leer el indice
 
-    // Comprobar que es correcto y leer la matricula
+        // student enters information, which is copied into file
 
-    cout << "Escriba su indice ";
+        while (indice > 0 && indice <= 100) {
 
-    cin >> indice; // leer el indice
+            // leemos la matricula
 
+            cout << "Escriba su matrícula ";
 
+            cin >> matricula;
 
-   // student enters information, which is copied into file
+            // creamos el objeto de clase IndiceEstudiante
 
-    while (indice > 0 && indice <= 100) {
+            IndiceEstudiante estudiante {
+                indice,
+                matricula
+            };
 
-        // leemos la matricula
+            // buscar posición en el archivo indice.dat
 
-        cout << "Escriba su matrícula ";
+            outIndice.seekp((estudiante.getIndice() - 1) * sizeof(IndiceEstudiante));
 
-        cin >> matricula;
+            // write user-specified information in file
 
-        
+            outIndice.write(
 
+                    reinterpret_cast < const char *> (& estudiante),
+                    sizeof(IndiceEstudiante)
+                );
 
+                // Entramos otro estudiante
 
-        // creamos el objeto de clase IndiceEstudiante
+                cout << "Escriba el indice? ";
 
-        IndiceEstudiante estudiante{ indice, matricula};
+                cin >> indice;
 
+            }
 
+            return 0;
 
-        // buscar posición en el archivo indice.dat   
-
-        outIndice.seekp(
-
-            (estudiante.getIndice() - 1) * sizeof(IndiceEstudiante));
-
-
-
-
-
-        // write user-specified information in file                  
-
-        outIndice.write(
-
-            reinterpret_cast<const char*>(&estudiante), sizeof(IndiceEstudiante));
-
-
-
-        // Entramos otro estudiante
-
-        cout << "Escriba el indice? ";
-
-        cin >> indice;
-
-    }
-
-
-
-    return 0;
-
-}
-
-
-
+        }
