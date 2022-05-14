@@ -35,3 +35,40 @@ int makeIndices(vector<IndiceEstudiante> v1)
     }
     
 }
+
+void outputLine(ostream& output, const IndiceEstudiante& record) {
+    output << left << setw(10) << record.getIndice()
+        << setw(16) << record.getMatricula()
+        << right << fixed
+        << showpoint << endl;
+}
+
+
+int outIndices()
+{
+    ifstream inIndices{"indice.dat", ios::in | ios::binary};
+
+    if(!inIndices)
+    {
+        cerr << "No se pudo abrir el archivo" << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    cout << left << setw(10) << "Indice" << setw(16) << "Matricula" 
+        << setw(10) << right;
+
+    IndiceEstudiante molde;
+
+    inIndices.read(reinterpret_cast<char*>(&molde),sizeof(IndiceEstudiante));
+
+    while(inIndices){
+        if(molde.getIndice() != 0)
+        {
+            outputLine(cout,molde);
+        }
+
+        inIndices.read(reinterpret_cast<char*>(&molde),sizeof(IndiceEstudiante));
+    }
+
+    return 0;
+}

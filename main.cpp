@@ -6,6 +6,9 @@ int main()
     map<const string,int> ind;
     map<const string,int>::iterator i;
 
+    IndiceEstudiante* p1 = new IndiceEstudiante["123",123];
+    IndiceEstudiante* arr[10];
+
     ind["0243165"] = 1;
     ind["0246723"] = 2;
     ind["0241721"] = 3;
@@ -28,10 +31,24 @@ int main()
 
     }
 
+    for(auto i:list)
+    {
+        cout << i.getIndice() << ": " << i.getMatricula() << endl;
+    }
+
+    
     cout << "Create the Indice file" << endl;
     makeIndiceEmptyFile();
     cout << "Fill the Indice file " << endl;
+    makeIndices(list);
     
 
+}
+
+int* fool()
+{
+    int arr[2];
+
+    return arr;
 
 }
