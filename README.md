@@ -148,9 +148,7 @@ Indice // Matricula  1
 
 Indice para cada matrícula
 
-5 opciones de menu: 
-  1. Genera los 3 archivos
-  2. Promedio más alto en una materia
+
 
 Debe tener 4 materias
 
