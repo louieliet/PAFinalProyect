@@ -40,7 +40,7 @@ public:
 private:
 	int indice;
 	char matricula[8];
-	char name[25];
+	char name[20];
 };
 
 
@@ -73,10 +73,10 @@ public:
 			string materia = it->first;
 			double calif = it->second;
 
-			out << setw(2) << 
-				matricula << setw(17) << 
-				materia << setw(17) << 
-				calif << setw(17) << endl;
+			out << setw(7) << 
+				matricula << setw(6) << 
+				materia << setw(10) << 
+				calif << setw(10) << endl;
 
     	}
 	}
