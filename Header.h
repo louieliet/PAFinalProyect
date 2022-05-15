@@ -11,6 +11,7 @@ int menu(){
     int x;
     cout << "1. Ver Personas" << endl;
     cout << "2. Buscar Persona" << endl;
+    cout << "3. Salir" << endl;
     cin >> x;
     return x;
 

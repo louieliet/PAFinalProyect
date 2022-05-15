@@ -9,11 +9,12 @@ using namespace std;
 
 class IndiceEstudiante {
 public:
-	IndiceEstudiante(int indice = 65536, const string& matricula = "1234567") {
+	IndiceEstudiante(int indice = 65536, const string& matricula = "1234567", const string& name = " ") {
 		this->indice = indice;
 		setMatricula(matricula);
-
+		setName(name);
 	}
+
 	void setMatricula(const string& matricula) {
 
 		size_t length{ matricula.size() };
@@ -22,14 +23,24 @@ public:
 		this->matricula[length] = '\0'; 
 
 	}
+	
+	void setName(const string& name) {
 
+		size_t length{ name.size() };
+		length = (length < 25 ? length : 24);
+		name.copy(this->name, length);
+		this->name[length] = '\0'; 
+
+	}
+	
 	int getIndice() const {return indice;}
 	string getMatricula() const {return matricula;}
+	string getName() const {return name;}
 
 private:
 	int indice;
 	char matricula[8];
-	
+	char name[25];
 };
 
 
