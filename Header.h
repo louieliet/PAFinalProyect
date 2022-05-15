@@ -1,5 +1,12 @@
 #include "MainHeader.h"
 
+
+double califRand(double fMin, double fMax)
+{
+    double f = (double)rand() / RAND_MAX;
+    return fMin + f * (fMax - fMin);
+}
+
 int menu(){
     int x;
     cout << "1. Ver Personas" << endl;
@@ -56,6 +63,16 @@ void makeIndiceFile(ofstream &es, vector<IndiceEstudiante> list){
 
     for(auto i:list){
         es << setw(2) << i.getIndice() << setw(17) << i.getMatricula() << endl;
+    }
+    es.close();
+}
+
+void makeMateriasFile(ofstream &es, vector<Materias> list){
+    
+    es.open("materias.dat",ios::out);
+
+    for(auto i:list){
+        es << setw(2) << i.getMatricula() << setw(17) << i.getMatricula() << endl;
     }
     es.close();
 }
