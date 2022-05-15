@@ -27,7 +27,7 @@ public:
 	void setName(const string& name) {
 
 		size_t length{ name.size() };
-		length = (length < 25 ? length : 24);
+		length = (length < 20 ? length : 19);
 		name.copy(this->name, length);
 		this->name[length] = '\0'; 
 

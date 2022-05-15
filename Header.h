@@ -35,7 +35,7 @@ void verRegistros(ifstream &Lec){
 }
 
 void search(ifstream &Lec){
-    string id;
+    string id; 
     int indice, indicesearched;
     bool finded;
     Lec.open("indice.dat",ios::in);
@@ -58,14 +58,70 @@ void search(ifstream &Lec){
         cout << "No se encontró" << endl;
 }
 
+
+void CrearArchivoIndice(){
+
+    fstream outFile{"indice.dat", ios::in | ios::out | ios::binary};
+    if(!outFile){
+        cerr << "File could not be opened." << endl;
+        exit(EXIT_FAILURE);
+    }
+
+
+    cout << "Enter indice(1 to 100, 0 to end input)\n? ";
+
+    int indice;
+    string matricula;
+    string name;
+
+    cin >> indice;
+
+    while (indice > 0 && indice <= 100) {
+
+        cout << "Enter name and id\n? ";
+        cin >> name;
+        cin >> matricula;
+
+        IndiceEstudiante client{ indice, matricula, name};
+
+
+        outFile.seekp(
+            (client.getIndice() - 1) * sizeof(IndiceEstudiante));
+
+
+             
+        outFile.write(
+            reinterpret_cast<const char*>(&client), sizeof(IndiceEstudiante));
+
+
+        cout << "Enter account number\n? ";
+        cin >> indice;
+    }
+
+
+}
+
 void makeIndiceFile(ofstream &es, vector<IndiceEstudiante> list){
     
     es.open("indice.dat",ios::out);
 
     for(auto i:list){
-        es << setw(20) << i.getName() << setw(10) <<i.getIndice() << setw(10) << i.getMatricula() << endl;
+        es << setw(2) <<i.getIndice() << setw(2) << "|" << setw(17) << i.getName() << setw(4) << "|" << setw(8) << i.getMatricula() << endl;
     }
     es.close();
+}
+
+void MakeEmptyIndiceFile(ofstream &es){
+
+    es.open("indice.dat",ios::out);
+
+    IndiceEstudiante out;
+
+    for(int i=0; i<100; i++){
+        es.write(reinterpret_cast<const char*>(&out), sizeof(IndiceEstudiante));
+        es << endl;
+
+    }
 }
 
 void makeMateriasFile(ofstream &es, vector<Materias> list){

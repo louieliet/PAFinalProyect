@@ -31,6 +31,10 @@ int main(){
     }
 
 
+    MakeEmptyIndiceFile(Esc);
+    CrearArchivoIndice();
+    return 0;
+
     makeIndiceFile(Esc,listaIndices);
     makeMateriasFile(Esc,listaMaterias);
 
