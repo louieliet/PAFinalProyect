@@ -15,11 +15,11 @@ public:
 
 	}
 	void setMatricula(const string& matricula) {
-		// copy at most 7 characters from string to matricula
+
 		size_t length{ matricula.size() };
 		length = (length < 8 ? length : 7);
 		matricula.copy(this->matricula, length);
-		this->matricula[length] = '\0'; // append null character to lastName
+		this->matricula[length] = '\0'; 
 
 	}
 
@@ -32,3 +32,23 @@ private:
 	
 };
 
+
+class Materias
+{
+public:
+	Materias(const string& materia = "NUL", double calif = 0.0)
+	{
+		this-> calif = calif;
+		setMateria(materia);
+	}
+	void setMateria(const string& materia){
+
+		size_t length{ materia.size() };
+		length = (length < 3 ? length : 2);
+		materia.copy(this->materia, length);
+		this->materia[length] = '\0'; 
+	}
+private:
+	char materia[3];
+	double calif;
+};
