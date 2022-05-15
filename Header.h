@@ -47,3 +47,13 @@ void search(ifstream &Lec){
     if(!finded)
         cout << "No se encontró" << endl;
 }
+
+void agregar(ofstream &es, vector<IndiceEstudiante> list){
+    
+    es.open("example.txt",ios::out | ios::app);
+
+    for(auto i:list){
+        es << setw(2) << i.getIndice() << setw(10) << i.getMatricula() << endl;
+    }
+    es.close();
+}

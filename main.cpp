@@ -26,6 +26,9 @@ int main(){
     ofstream Esc;
     ifstream Lec;
     int op;
+
+    agregar(Esc,list);
+
     do{
         op = menu();
         switch (op)
