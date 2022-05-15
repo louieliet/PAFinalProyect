@@ -44,44 +44,23 @@ private:
 };
 
 
-class Materias {
+class Materias : public IndiceEstudiante {
 public:
 	
-	Materias(const string& matricula, const double PA, const double POO, const double GEO, const double ING)
+	Materias(IndiceEstudiante &student, const double PA = 0.0, const double POO = 0.0, const double GEO = 0.0, const double ING = 0.0) 
 	{	
-		setMatricula(matricula);
-		boleta[this->PA] = PA;
-		boleta[this->POO] = POO;
-		boleta[this->GEO] = GEO;
-		boleta[this->ING] = ING;
+		this->indice = student.getIndice();
+		setMatricula(student.getMatricula());
 
 	}
 
-	void setMatricula(const string& matricula) {
-
-		size_t length{ matricula.size() };
-		length = (length < 8 ? length : 7);
-		matricula.copy(this->matricula, length);
-		this->matricula[length] = '\0'; 
-	}
 	string getMatricula() const {return matricula;}
 
-	double* getCalifs() const{
-
-		double calisarray[4];
-
-		for(int i{0}; i<5; i++){
-			
-		}
-
-		return calisarray;	
-	}
-
 private:
-	map<char*,double> boleta;
 	char PA[4] = "PA1";
 	char POO[4] = "POO";
 	char GEO[4] = "GEO";
 	char ING[4] = "ING";
 	char matricula[8];
+	int indice;
 };
