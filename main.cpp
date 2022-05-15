@@ -27,7 +27,7 @@ int main(){
     ifstream Lec;
     int op;
 
-    agregar(Esc,list);
+    makeIndiceFile(Esc,list);
 
     do{
         op = menu();

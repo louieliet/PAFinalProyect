@@ -50,12 +50,12 @@ void search(ifstream &Lec){
         cout << "No se encontró" << endl;
 }
 
-void agregar(ofstream &es, vector<IndiceEstudiante> list){
+void makeIndiceFile(ofstream &es, vector<IndiceEstudiante> list){
     
     es.open("indice.dat",ios::out);
 
     for(auto i:list){
-        es << setw(2) << i.getIndice() << setw(10) << i.getMatricula() << endl;
+        es << setw(2) << i.getIndice() << setw(17) << i.getMatricula() << endl;
     }
     es.close();
 }
