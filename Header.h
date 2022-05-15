@@ -75,11 +75,8 @@ int CrearArchivoIndice(){
     vector<IndiceEstudiante> list = {s1,s2,s3};
 
     for( auto i : list ){
-
         outFile.seekp( (i.getIndice() - 1) * sizeof(IndiceEstudiante) );
-        outFile.write(
-            reinterpret_cast<const char*>(&i), sizeof(IndiceEstudiante));
-
+        outFile.write( reinterpret_cast<const char*>(&i), sizeof(IndiceEstudiante) );
     }
     
     return 0;
@@ -93,12 +90,9 @@ void MakeEmptyIndiceFile(){
         cerr << "File could not be opened." << endl;
         exit(EXIT_FAILURE);
     }
-
-    file.open("indice.dat",ios::out);
-
     IndiceEstudiante out;
 
-    for(int i=0; i<100; i++){
+    for(int i=0; i<100; ++i){
         file.write(reinterpret_cast<const char*>(&out), sizeof(IndiceEstudiante));
     }
 }

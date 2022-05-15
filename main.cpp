@@ -4,6 +4,6 @@ int main(){
 
     MakeEmptyIndiceFile();
     CrearArchivoIndice();
-    
     return 0;
+
 }
