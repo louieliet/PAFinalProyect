@@ -59,48 +59,47 @@ void search(ifstream &Lec){
 }*/
 
 
-void CrearArchivoIndice(){
+int CrearArchivoIndice(){
 
     fstream outFile{"indice.dat", ios::in | ios::out | ios::binary};
+
     if(!outFile){
         cerr << "File could not be opened." << endl;
         exit(EXIT_FAILURE);
     }
 
-    cout << "Enter indice(1 to 100, 0 to end input)\n? ";
+    IndiceEstudiante s1(1,"0241718","EmilianoMontesGomez");
+    IndiceEstudiante s2(2,"0241719","LizbethTrujilloSalgado");
+    IndiceEstudiante s3(50,"0241720","ArianaRodriguezCastaneda");
 
-    int indice;
-    string matricula;
-    string name;
+    vector<IndiceEstudiante> list = {s1,s2,s3};
 
-    cin >> indice;
+    for( auto i : list ){
 
-    while (indice > 0 && indice <= 100) {
+        outFile.seekp( (i.getIndice() - 1) * sizeof(IndiceEstudiante) );
+        outFile.write(
+            reinterpret_cast<const char*>(&i), sizeof(IndiceEstudiante));
 
-        cout << "Enter name and id\n? ";
-        cin >> name;
-        cin >> matricula;
-
-        IndiceEstudiante client{ indice, matricula, name};
-
-        outFile.seekp((client.getIndice() - 1) * sizeof(IndiceEstudiante));          
-        outFile.write(reinterpret_cast<const char*>(&client), sizeof(IndiceEstudiante));
-
-        cout << "Enter account number\n? ";
-        cin >> indice;
     }
-
-
+    
+    return 0;
 }
 
-void MakeEmptyIndiceFile(ofstream &es){
+void MakeEmptyIndiceFile(){
 
-    es.open("indice.dat",ios::out);
+    ofstream file{ "indice.dat", ios::out | ios::binary };
+
+    if (!file) {
+        cerr << "File could not be opened." << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    file.open("indice.dat",ios::out);
 
     IndiceEstudiante out;
 
     for(int i=0; i<100; i++){
-        es.write(reinterpret_cast<const char*>(&out), sizeof(IndiceEstudiante));
+        file.write(reinterpret_cast<const char*>(&out), sizeof(IndiceEstudiante));
     }
 }
 
