@@ -3,17 +3,18 @@
 int main(){
 
     vector<IndiceEstudiante> ilist;
+    vector<Materias> mlist;
+    ofstream Esc;
+    ifstream Lec;
+    int op;
 
     map<int,string> ind;
     map<int,string>::iterator i;
+
     ind[1] = "0241718";
     ind[5] = "0241718";
     ind[10] = "0243165";
     ind[2] = "0246521";
-
-    vector<Materias> mlist;
-
-    
 
     for(i=ind.begin(); i != ind.end(); i++){
         
@@ -21,16 +22,13 @@ int main(){
         int indice = i->first;
 
         IndiceEstudiante imodelo(indice,id);
-        Materias mmodelo(id,califRand(1,10),califRand(1,10),califRand(1,10),califRand(1,10));
+        Materias mmodelo(id,9.5,7.7,8.3,5.6);
 
         ilist.push_back(imodelo);
         mlist.push_back(mmodelo);
 
     }
 
-    ofstream Esc;
-    ifstream Lec;
-    int op;
 
     makeIndiceFile(Esc,ilist);
     makeMateriasFile(Esc,mlist);
@@ -49,6 +47,7 @@ int main(){
             break;
         }
         
-    }while(op!=3);
+    } while(op!=3);
+
     return 0;
 }

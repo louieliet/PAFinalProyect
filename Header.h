@@ -72,7 +72,7 @@ void makeMateriasFile(ofstream &es, vector<Materias> list){
     es.open("materias.dat",ios::out);
 
     for(auto i:list){
-        es << setw(2) << i.getMatricula() << setw(17) << i.getMatricula() << endl;
+        i.getCalifs(es);
     }
     es.close();
 }

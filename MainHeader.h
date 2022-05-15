@@ -54,30 +54,25 @@ public:
 		this->matricula[length] = '\0'; 
 	}
 	string getMatricula() const {return matricula;}
-	double getCalifPA() const {
-		auto it = boleta.find("PA");
-		return it->second;
+
+	void getCalifs(ofstream &out) const{
+
+		for(auto it = boleta.begin(); it != boleta.end(); it++){
+			
+			string materia = it->first;
+			double calif = it->second;
+
+			out << setw(2) << 
+				matricula << setw(17) << 
+				materia << setw(17) << 
+				calif << setw(17) << endl;
+
+    	}
 	}
-	
-	double getCalifPOO() const {
-		auto it = boleta.find("POO");
-		return it->second;
-	}
-	
-	double getCalifGEO() const {
-		auto it = boleta.find("GEO");
-		return it->second;
-	}
-	
-	double getCalifING() const {
-		auto it = boleta.find("ING");
-		return it->second;
-	}
-	
 
 private:
 	map<char*,double> boleta;
-	char PA[4] = "PA";
+	char PA[4] = "PA1";
 	char POO[4] = "POO";
 	char GEO[4] = "GEO";
 	char ING[4] = "ING";
