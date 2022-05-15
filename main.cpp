@@ -35,7 +35,8 @@ int main(){
     CrearArchivoIndice();
     return 0;
 
-    makeIndiceFile(Esc,listaIndices);
+
+    /*makeIndiceFile(Esc,listaIndices);
     makeMateriasFile(Esc,listaMaterias);
 
     do{
@@ -53,6 +54,6 @@ int main(){
         }
         
     } while(op!=3);
-
+    */
     return 0;
 }

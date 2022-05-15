@@ -7,7 +7,7 @@ double califRand(double fMin, double fMax)
     return fMin + f * (fMax - fMin);
 }
 
-int menu(){
+/*int menu(){
     int x;
     cout << "1. Ver Personas" << endl;
     cout << "2. Buscar Persona" << endl;
@@ -56,7 +56,7 @@ void search(ifstream &Lec){
 
     if(!finded)
         cout << "No se encontró" << endl;
-}
+}*/
 
 
 void CrearArchivoIndice(){
@@ -66,7 +66,6 @@ void CrearArchivoIndice(){
         cerr << "File could not be opened." << endl;
         exit(EXIT_FAILURE);
     }
-
 
     cout << "Enter indice(1 to 100, 0 to end input)\n? ";
 
@@ -84,31 +83,14 @@ void CrearArchivoIndice(){
 
         IndiceEstudiante client{ indice, matricula, name};
 
-
-        outFile.seekp(
-            (client.getIndice() - 1) * sizeof(IndiceEstudiante));
-
-
-             
-        outFile.write(
-            reinterpret_cast<const char*>(&client), sizeof(IndiceEstudiante));
-
+        outFile.seekp((client.getIndice() - 1) * sizeof(IndiceEstudiante));          
+        outFile.write(reinterpret_cast<const char*>(&client), sizeof(IndiceEstudiante));
 
         cout << "Enter account number\n? ";
         cin >> indice;
     }
 
 
-}
-
-void makeIndiceFile(ofstream &es, vector<IndiceEstudiante> list){
-    
-    es.open("indice.dat",ios::out);
-
-    for(auto i:list){
-        es << setw(2) <<i.getIndice() << setw(2) << "|" << setw(17) << i.getName() << setw(4) << "|" << setw(8) << i.getMatricula() << endl;
-    }
-    es.close();
 }
 
 void MakeEmptyIndiceFile(ofstream &es){
@@ -119,17 +101,6 @@ void MakeEmptyIndiceFile(ofstream &es){
 
     for(int i=0; i<100; i++){
         es.write(reinterpret_cast<const char*>(&out), sizeof(IndiceEstudiante));
-        es << endl;
-
     }
 }
 
-void makeMateriasFile(ofstream &es, vector<Materias> list){
-    
-    es.open("materias.dat",ios::out);
-
-    for(auto i:list){
-        i.getCalifs(es);
-    }
-    es.close();
-}
