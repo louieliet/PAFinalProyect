@@ -66,19 +66,15 @@ public:
 	}
 	string getMatricula() const {return matricula;}
 
-	void getCalifs(ofstream &out) const{
+	double* getCalifs() const{
 
-		for(auto it = boleta.begin(); it != boleta.end(); it++){
+		double calisarray[4];
+
+		for(int i{0}; i<5; i++){
 			
-			string materia = it->first;
-			double calif = it->second;
+		}
 
-			out << setw(7) << 
-				matricula << setw(6) << 
-				materia << setw(10) << 
-				calif << setw(10) << endl;
-
-    	}
+		return calisarray;	
 	}
 
 private:

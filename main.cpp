@@ -2,8 +2,7 @@
 
 int main(){
 
-    MakeEmptyIndiceFile();
-    CrearArchivoIndice();
+    menu();
     return 0;
 
 }

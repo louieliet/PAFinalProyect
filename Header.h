@@ -59,7 +59,11 @@ void search(ifstream &Lec){
 }*/
 
 
-int CrearArchivoIndice(){
+
+
+
+
+int MakeIndiceFile(){
 
     fstream outFile{"indice.dat", ios::in | ios::out | ios::binary};
 
@@ -82,7 +86,9 @@ int CrearArchivoIndice(){
     return 0;
 }
 
-void MakeEmptyIndiceFile(){
+//Make empty files:
+
+int MakeEmptyIndiceFile(){
 
     ofstream file{ "indice.dat", ios::out | ios::binary };
 
@@ -95,5 +101,99 @@ void MakeEmptyIndiceFile(){
     for(int i=0; i<100; ++i){
         file.write(reinterpret_cast<const char*>(&out), sizeof(IndiceEstudiante));
     }
+
+    return 0;
+}
+
+int MakeEmptyMateriasFile(){
+
+    ofstream file{ "materias.dat", ios::out | ios::binary };
+
+    if (!file) {
+        cerr << "File could not be opened." << endl;
+        exit(EXIT_FAILURE);
+    }
+    IndiceEstudiante out;
+
+    for(int i=0; i<100; ++i){
+        file.write(reinterpret_cast<const char*>(&out), sizeof(IndiceEstudiante));
+    }
+
+    return 0;
+}
+
+int MakeEmptyMateriaFile(){
+
+    ofstream file{ "materia.dat", ios::out | ios::binary };
+
+    if (!file) {
+        cerr << "File could not be opened." << endl;
+        exit(EXIT_FAILURE);
+    }
+    IndiceEstudiante out;
+
+    for(int i=0; i<100; ++i){
+        file.write(reinterpret_cast<const char*>(&out), sizeof(IndiceEstudiante));
+    }
+
+    return 0;
+}
+
+int Calificaciones(){
+
+    char* op;
+    cout << "Deme su matricula: " << endl;
+    cin >> op;
+
+
+
+    return 0;
+}
+
+
+void menu(){
+
+    int op;
+    bool running = true;
+
+    while(running){
+
+        cout << setw(20) << "-- Menu --" << endl;
+        cout <<  "1. Crear los archivos " << endl;
+        cout <<  "2. Calificaciones individuales " << endl;
+        cout <<  "3. Promedio de calificaciones por estudiante " << endl;
+        cout <<  "4. Calificacion mas alta por materia " << endl;
+        cout <<  "5. Salir " << endl;
+
+        cin >> op;
+
+        switch (op)
+        {
+        case 1:
+            system("cls");
+            MakeEmptyIndiceFile();
+            cout << "Creando archivos..." << endl;
+            cout << "Archivos creados, llenado archivos..." << endl;
+            MakeIndiceFile();
+            cout << "Archivos llenados con exito" << endl;
+            break;
+        case 2:
+            MakeEmptyIndiceFile();
+            break;
+        case 3:
+            MakeEmptyIndiceFile();
+            break;
+        case 4:
+            MakeEmptyIndiceFile();
+            break;
+        case 5:
+            running = false;
+            break;
+        
+        default:
+            break;
+        }
+    }
+
 }
 
