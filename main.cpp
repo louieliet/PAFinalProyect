@@ -1,54 +1,44 @@
 #include "Header.h"
 
-int main()
-{
+int main(){
+
     vector<IndiceEstudiante> list;
-    map<const string,int> ind;
-    map<const string,int>::iterator i;
 
-    IndiceEstudiante* p1 = new IndiceEstudiante["123",123];
-    IndiceEstudiante* arr[10];
+    map<int,string> ind;
+    map<int,string>::iterator i;
+    ind[1] = "0243556";
+    ind[5] = "0241718";
+    ind[10] = "0243165";
+    ind[2] = "0246521";
+    
 
-    ind["0243165"] = 1;
-    ind["0246723"] = 2;
-    ind["0241721"] = 3;
-    ind["0241722"] = 4;
-    ind["0241788"] = 5;
-    ind["0241724"] = 6;
-    ind["0241725"] = 7;
-    ind["0241726"] = 8;
-    ind["0241727"] = 9;
-    ind["0241728"] = 10;
-    ind["0241718"] = 11;
+    for(i=ind.begin(); i != ind.end(); i++){
+        
+        string id = i->second;
+        int indice = i->first;
 
-    for(i = ind.begin(); i != ind.end(); i++)
-    {
-        string matricula = i->first;
-        int indice = i->second;
+        IndiceEstudiante modelo(indice,id);
 
-        IndiceEstudiante molde(indice,matricula);
-        list.push_back(molde);
+        list.push_back(modelo);
 
     }
 
-    for(auto i:list)
-    {
-        cout << i.getIndice() << ": " << i.getMatricula() << endl;
-    }
-
-    
-    cout << "Create the Indice file" << endl;
-    makeIndiceEmptyFile();
-    cout << "Fill the Indice file " << endl;
-    makeIndices(list);
-    
-
-}
-
-int* fool()
-{
-    int arr[2];
-
-    return arr;
-
+    ofstream Esc;
+    ifstream Lec;
+    int op;
+    do{
+        op = menu();
+        switch (op)
+        {
+        case 1:
+            verRegistros(Lec);
+            break;
+        case 2:
+            search(Lec);
+            break;
+        default:
+            break;
+        }
+    }while(op!=3);
+    return 0;
 }

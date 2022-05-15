@@ -5,13 +5,11 @@
 #include <string>
 #include <vector>
 #include <map>
-
 using namespace std;
-
 
 class IndiceEstudiante {
 public:
-	IndiceEstudiante(int indice = 65536, const string& matricula) {
+	IndiceEstudiante(int indice = 65536, const string& matricula = "1234567") {
 		this->indice = indice;
 		setMatricula(matricula);
 
@@ -25,22 +23,12 @@ public:
 
 	}
 
-	int getIndice() const { return indice; }
-
-	string getMatricula() const { return matricula; }
+	int getIndice() const {return indice;}
+	string getMatricula() const {return matricula;}
 
 private:
-	char matricula[8];
 	int indice;
+	char matricula[8];
+	
 };
 
-
-class Materias
-{
-private:
-	char nombre[15];
-	int calificacion;
-
-public:
-
-};
