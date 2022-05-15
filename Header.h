@@ -13,8 +13,9 @@ void verRegistros(ifstream &Lec){
     string id;
     int indice;
 
-    Lec.open("example.txt",ios::in);
+    Lec.open("indice.dat",ios::in);
     Lec >> indice;
+    cout << "-- Registro -- " << endl;
     while (!Lec.eof()){
         Lec >> id;
         cout << "Indice: " << indice << endl;
@@ -29,7 +30,8 @@ void search(ifstream &Lec){
     string id;
     int indice, indicesearched;
     bool finded;
-    Lec.open("example.txt",ios::in);
+    Lec.open("indice.dat",ios::in);
+    system("cls");
     cout << "Introduzca el indice" << endl;
     cin >> indicesearched;
     Lec>>indice;
@@ -50,7 +52,7 @@ void search(ifstream &Lec){
 
 void agregar(ofstream &es, vector<IndiceEstudiante> list){
     
-    es.open("example.txt",ios::out | ios::app);
+    es.open("indice.dat",ios::out);
 
     for(auto i:list){
         es << setw(2) << i.getIndice() << setw(10) << i.getMatricula() << endl;

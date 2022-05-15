@@ -6,7 +6,7 @@ int main(){
 
     map<int,string> ind;
     map<int,string>::iterator i;
-    ind[1] = "0243556";
+    ind[1] = "0241718";
     ind[5] = "0241718";
     ind[10] = "0243165";
     ind[2] = "0246521";
