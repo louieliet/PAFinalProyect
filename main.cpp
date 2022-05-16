@@ -3,13 +3,27 @@
 int main(){
 
 
-    IndiceEstudiante s1(1,"0241718","EmilianoMontesGomez");
-    IndiceEstudiante s2(2,"0241719","LizbethTrujilloSalgado");
-    IndiceEstudiante s3(50,"0241720","ArianaRodriguezCastaneda");
-
-    Materias m1(1, "0241718", 10,10,10,10);
-    Materias m2(2,"0241719", 5,5,5,5);
-    Materias m3(50,"0241720", 8,8,8,8);
+    IndiceEstudiante s1(1,"0241718","Emiliano");
+    IndiceEstudiante s2(13,"0241719","Lizbeth");
+    IndiceEstudiante s3(50,"0241720","Ariana");
+    IndiceEstudiante s4(2,"0241721","Angel");
+    IndiceEstudiante s5(33,"0241722","Ricardo");
+    IndiceEstudiante s6(80,"0241723","Ana");
+    IndiceEstudiante s7(27,"0241724","Gio");
+    IndiceEstudiante s8(40,"0241725","Regina");
+    IndiceEstudiante s9(60,"0241726","Juan Pablo");
+    IndiceEstudiante s10(50,"0241727","Carlos");
+    
+    Materias m1(1, "0241718", 10,8,10,9);
+    Materias m2(13,"0241719", 8,9,10,9);
+    Materias m3(50,"0241720", 8,10,10,9);
+    Materias m4(2,"0241721",7,8,10,7);
+    Materias m5(33,"0241722",10,7,7,10);
+    Materias m6(80,"0241723",8,9,10,7);
+    Materias m7(27,"0241724",10,9,8,7);
+    Materias m8 (40,"0241725",7,7,8,9);
+    Materias m9 (60,"0241726",8,8,9,9);
+    Materias m10 (50,"0241727",9,9,7,10);
 
     Materia PA(1,"PA1","ProgramacionAvanzada");
     Materia POO(2,"POO","ProgramacionOrientadaObjeto");

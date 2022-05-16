@@ -158,6 +158,7 @@ int CalificacionesIndividuales(vector<Materias> list){
 
 int Promedio(vector<Materias> list){
 
+
 }
 
 //Main menu:
@@ -197,7 +198,6 @@ int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materi
             break;
         case 3:
             system("cls");
-
             Promedio(materias);
             break;
         case 4:
