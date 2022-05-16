@@ -124,16 +124,16 @@ double calculateProm(const Materias& student){
 
 }
 
-void outputLine(ostream& output, const Materias& record) {
+void outputLine(ostream& output, const Materias& record, const IndiceEstudiante& list) {
     
-    output << left <<setw(9) << "ID";
+    output << left <<setw(20) << "Nombre";
 	output << setw(5)<<"PA1";
 	output << setw(5)<<"POO";
 	output << setw(5)<<"MAT";
 	output << setw(5) << "ING"
     << endl;
 	
-    output << left << setw(9) << record.getMatricula()
+    output << left << setw(20) << list.getName()
         << setw(5) << record.getc1()
         << setw(5) << record.getc2()
         << setw(5) << record.getc3()
@@ -142,20 +142,25 @@ void outputLine(ostream& output, const Materias& record) {
 
 void outputProm(ostream& output, const Materias& record) {
     
-    output << left <<setw(9) << "ID";
+    output << left <<setw(20) << "Nombre";
 	output << setw(5)<< "PROMEDIO" << endl;
 	
-    output << left << setw(9) << record.getMatricula()
+    output << left << setw(20) << record.getMatricula()
         << setw(5) << calculateProm(record) << endl;
 }
 
+int CalificacionesIndividuales(vector<IndiceEstudiante> list2,vector<Materias> list){
 
-int CalificacionesIndividuales(vector<Materias> list){
+    ifstream file1{"materias.dat", ios::in | ios::binary};
+    ifstream file2{"indice.dat", ios::in | ios::binary};
 
-    ifstream file{"materias.dat", ios::in | ios::binary};
+    if (!file1) {
+        cerr << "File 1 could not be opened." << endl;
+        exit(EXIT_FAILURE);
+    }
 
-    if (!file) {
-        cerr << "File could not be opened." << endl;
+    if (!file2) {
+        cerr << "File 2 could not be opened." << endl;
         exit(EXIT_FAILURE);
     }
 
@@ -163,19 +168,28 @@ int CalificacionesIndividuales(vector<Materias> list){
     cout << "Deme el indice" << endl;
 	cin>> op;
     flag = 0;
-		
-    for( auto i : list)
-    {
-        if(i.getIndice() == op){
-            file.seekg((op-1)*sizeof(Materias));
-            file.read(reinterpret_cast<char*>(&i),sizeof(Materias));
-            outputLine(cout,i);  
-            flag = 1;  
+
+
+    for( auto j : list2 ){
+
+        for( auto i : list){
+            if(i.getIndice() == op){
+                file2.seekg((op-1)*sizeof(IndiceEstudiante));
+                file1.seekg((op-1)*sizeof(Materias));
+                file1.read(reinterpret_cast<char*>(&i),sizeof(Materias));
+                file2.read(reinterpret_cast<char*>(&j),sizeof(IndiceEstudiante));
+                outputLine(cout,i,j);  
+                flag = 1;  
+            }
+        }
+        if(flag == 0){
+            cout << "Eror, ese estudiante no existe" << endl;
+        }
+        if(flag = 1){
+            break;
         }
     }
-    if(flag == 0){
-        cout << "Eror, ese estudiante no existe" << endl;
-    }
+
 
     return 0;
 }
@@ -213,7 +227,12 @@ int Promedio(vector<Materias> list){
 
 }
 
+int CalifCompair(){
+
+}
+
 //Main menu:
+
 int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materia> materia){
 
     int op;
@@ -246,7 +265,7 @@ int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materi
             break;
         case 2:
             system("cls"); 
-            CalificacionesIndividuales(materias);
+            CalificacionesIndividuales(list,materias);
             break;
         case 3:
             system("cls");
