@@ -1,110 +1,5 @@
 #include "MainHeader.h"
 
-/*int menu(){
-    int x;
-    cout << "1. Ver Personas" << endl;
-    cout << "2. Buscar Persona" << endl;
-    cout << "3. Salir" << endl;
-    cin >> x;
-    return x;
-
-}
-
-void verRegistros(ifstream &Lec){
-    string id;
-    int indice;
-
-    Lec.open("indice.dat",ios::in);
-    Lec >> indice;
-    cout << "-- Registro -- " << endl;
-    while (!Lec.eof()){
-        Lec >> id;
-        cout << "Indice: " << indice << endl;
-        cout << "ID: " << id << endl;
-        Lec >> indice;
-    }
-    Lec.close();
-
-}
-
-void search(ifstream &Lec){
-    string id; 
-    int indice, indicesearched;
-    bool finded;
-    Lec.open("indice.dat",ios::in);
-    system("cls");
-    cout << "Introduzca el indice" << endl;
-    cin >> indicesearched;
-    Lec>>indice;
-    while(!Lec.eof() && !finded){
-        Lec>>id;
-        if(indice == indicesearched){
-            cout << "ID:" << id << endl;
-            finded = true;
-        }
-        Lec>>indice;
-
-    }
-    Lec.close();
-
-    if(!finded)
-        cout << "No se encontró" << endl;
-}*/
-
-//Make files:
-
-int MakeIndiceFile(vector<IndiceEstudiante> list){
-
-    fstream outFile{"indice.dat", ios::in | ios::out | ios::binary};
-
-    if(!outFile){
-        cerr << "File could not be opened." << endl;
-        exit(EXIT_FAILURE);
-    }
-
-    for( auto i : list ){
-        outFile.seekp( (i.getIndice() - 1) * sizeof(IndiceEstudiante) );
-        outFile.write( reinterpret_cast<const char*>(&i), sizeof(IndiceEstudiante) );
-    }
-    
-    return 0;
-}
-
-int MakeMateriasFile(vector<Materias> list){
-
-    fstream outFile{"materias.dat", ios::in | ios::out | ios::binary};
-
-    if(!outFile){
-        cerr << "File could not be opened." << endl;
-        exit(EXIT_FAILURE);
-    }
-
-    for( auto i : list ){
-        outFile.seekp( (i.getIndice() - 1) * sizeof(Materias) );
-        outFile.write( reinterpret_cast<const char*>(&i), sizeof(Materias) );
-    }
-    
-    return 0;
-}
-
-int MakeMateriaFile(vector<Materia> list){
-
-    fstream outFile{"materia.dat", ios::in | ios::out | ios::binary};
-
-    if(!outFile){
-        cerr << "File could not be opened." << endl;
-        exit(EXIT_FAILURE);
-    }
-
-    for( auto i : list ){
-        outFile.seekp( (i.getIndice() - 1) * sizeof(Materia) );
-        outFile.write( reinterpret_cast<const char*>(&i), sizeof(Materia) );
-    }
-    
-    return 0;
-}
-
-
 //Make empty files:
 
 int MakeEmptyIndiceFile(){
@@ -160,18 +55,112 @@ int MakeEmptyMateriaFile(){
     return 0;
 }
 
-int Calificaciones(){
+//Make files:
 
-    char* op;
-    cout << "Deme su matricula: " << endl;
-    cin >> op;
+int MakeIndiceFile(vector<IndiceEstudiante> list){
 
+    fstream outFile{"indice.dat", ios::in | ios::out | ios::binary};
 
+    if(!outFile){
+        cerr << "File could not be opened." << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    for( auto i : list ){
+        outFile.seekp( (i.getIndice() - 1) * sizeof(IndiceEstudiante) );
+        outFile.write( reinterpret_cast<const char*>(&i), sizeof(IndiceEstudiante) );
+    }
+    
+    return 0;
+}
+
+int MakeMateriasFile(vector<Materias> list){
+
+    fstream outFile{"materias.dat", ios::in | ios::out | ios::binary};
+
+    if(!outFile){
+        cerr << "File could not be opened." << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    for( auto i : list ){
+        outFile.seekp( (i.getIndice() - 1) * sizeof(Materias) );
+        outFile.write( reinterpret_cast<const char*>(&i), sizeof(Materias) );
+    }
+    
+    return 0;
+}
+
+int MakeMateriaFile(vector<Materia> list){
+
+    fstream outFile{"materia.dat", ios::in | ios::out | ios::binary};
+
+    if(!outFile){
+        cerr << "File could not be opened." << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    for( auto i : list ){
+        outFile.seekp( (i.getIndice() - 1) * sizeof(Materia) );
+        outFile.write( reinterpret_cast<const char*>(&i), sizeof(Materia) );
+    }
+    
+    return 0;
+}
+
+//Read files:
+
+void outputLine(ostream& output, const Materias& record) {
+    
+    output << left <<setw(9) << "ID";
+	output << setw(5)<<"PA1";
+	output << setw(5)<<"POO";
+	output << setw(5)<<"MAT";
+	output << setw(5) << "ING"
+    << endl;
+	
+    output << left << setw(9) << record.getMatricula()
+        << setw(5) << record.getc1()
+        << setw(5) << record.getc2()
+        << setw(5) << record.getc3()
+        << setw(5) << record.getc4() << endl;
+}
+
+int CalificacionesIndividuales(vector<Materias> list){
+
+    ifstream file{"materias.dat", ios::in | ios::binary};
+
+    if (!file) {
+        cerr << "File could not be opened." << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    int op, flag;
+    cout << "Deme el indice" << endl;
+	cin>> op;
+    flag = 0;
+		
+    for( auto i : list)
+    {
+        if(i.getIndice() == op){
+            file.seekg((op-1)*sizeof(Materias));
+            file.read(reinterpret_cast<char*>(&i),sizeof(Materias));
+            outputLine(cout,i);  
+            flag = 1;  
+        }
+    }
+    if(flag == 0){
+        cout << "Eror, ese estudiante no existe" << endl;
+    }
 
     return 0;
 }
 
+int Promedio(vector<Materias> list){
 
+}
+
+//Main menu:
 int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materia> materia){
 
     int op;
@@ -203,10 +192,13 @@ int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materi
             cout << "Archivos llenados con exito" << endl;
             break;
         case 2:
-            
+            system("cls"); 
+            CalificacionesIndividuales(materias);
             break;
         case 3:
-            
+            system("cls");
+
+            Promedio(materias);
             break;
         case 4:
             
@@ -219,7 +211,6 @@ int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materi
             break;
         }
     }
-    
     
     return 0;
 }

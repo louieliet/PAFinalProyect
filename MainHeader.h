@@ -43,7 +43,6 @@ private:
 	char name[20];
 };
 
-
 class Materias {
 public:
 	Materias(int indice = 65536, const string& matricula = "1234567", const double pa = 0.0, const double poo = 0.0, const double mat = 0.0, const double ing=0.0) {
@@ -67,6 +66,10 @@ public:
 	
 	int getIndice() const {return indice;}
 	string getMatricula() const {return matricula;}
+	double getc1() const{ return calif1;}
+	double getc2() const{ return calif2;}
+	double getc3() const{ return calif3;}
+	double getc4() const{ return calif4;}
 	
 private:
 	int indice;
