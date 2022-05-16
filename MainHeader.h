@@ -113,6 +113,7 @@ public:
 	}
 
 	int getIndice() const {return indice;}
+	string getName() const {return nombre;}
 	
 private:
 	int indice;

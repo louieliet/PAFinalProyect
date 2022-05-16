@@ -238,8 +238,59 @@ int Promedio(vector<IndiceEstudiante> list2, vector<Materias> list){
 
 }
 
-int CalifCompair(){
+void outputBestotBest(ostream& output, const Materias& record, const IndiceEstudiante& list, const Materia& materia){
 
+    output << left << setw(15) << "Materia";
+	output << setw(5)<< " Mejor Calificacion";
+    output << setw(20) << "Nombre"  << endl;
+	
+
+}
+
+int CalifCompair(vector<IndiceEstudiante> list2,vector<Materias> list, vector<Materia> list3){
+
+    ifstream file1{"materias.dat", ios::in | ios::binary};
+    ifstream file2{"indice.dat", ios::in | ios::binary};
+
+    if (!file1) {
+        cerr << "File could not be opened." << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    if (!file2) {
+        cerr << "File could not be opened." << endl;
+        exit(EXIT_FAILURE);
+    }
+	
+    double maxpa = -999;
+    double maxpoo = -999;
+    double maxmat = -999;
+    double maxing = -999;
+
+    for( auto i : list )
+    {
+        if((i.getc1())>maxpa)
+        {
+            maxpa = i.getc1();
+        }
+		if ((i.getc2())>maxpoo)
+		{
+			maxpoo= i.getc2();
+		}
+		 if((i.getc3())>maxmat)
+        {
+            maxmat = i.getc3();
+        }
+		 if((i.getc4())>maxing)
+        {
+            maxing = i.getc4();
+        }
+		
+    }
+    cout << maxpa << endl;
+    cout << maxpoo << endl;
+    cout << maxmat << endl;
+    cout << maxing << endl;
 }
 
 //Main menu:
@@ -283,6 +334,8 @@ int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materi
             Promedio(list,materias);
             break;
         case 4:
+			system("cls");
+			CalifCompair(list,materias,materia);
             break;
         case 5:
             running = false;
