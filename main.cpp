@@ -2,7 +2,6 @@
 
 int main(){
 
-
     IndiceEstudiante s1(1,"0241718","Emiliano");
     IndiceEstudiante s2(13,"0241719","Lizbeth");
     IndiceEstudiante s3(50,"0241720","Ariana");
