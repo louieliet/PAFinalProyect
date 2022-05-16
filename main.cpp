@@ -2,27 +2,27 @@
 
 int main(){
 
-    IndiceEstudiante s1(1,"0241718","Emiliano");
-    IndiceEstudiante s2(13,"0241719","Lizbeth");
-    IndiceEstudiante s3(50,"0241720","Ariana");
-    IndiceEstudiante s4(2,"0241721","Angel");
-    IndiceEstudiante s5(33,"0241722","Ricardo");
-    IndiceEstudiante s6(80,"0241723","Ana");
-    IndiceEstudiante s7(27,"0241724","Gio");
-    IndiceEstudiante s8(40,"0241725","Regina");
-    IndiceEstudiante s9(60,"0241726","Juan Pablo");
-    IndiceEstudiante s10(59,"0241727","Carlos");
+    IndiceEstudiante s1(1, "0241718", "Emiliano");
+    IndiceEstudiante s2(13, "0241719", "Lizbeth");
+    IndiceEstudiante s3(50, "0241720", "Ariana");
+    IndiceEstudiante s4(2, "0241721", "Angel");
+    IndiceEstudiante s5(33, "0241722", "Ricardo");
+    IndiceEstudiante s6(80, "0241723", "Ana");
+    IndiceEstudiante s7(27, "0241724", "Gio");
+    IndiceEstudiante s8(40, "0241725", "Regina");
+    IndiceEstudiante s9(60, "0241726", "Juan Pablo");
+    IndiceEstudiante s10(59, "0241727", "Carlos");
     
-    Materias m1(1, "0241718", 10,8.1,10,9.3);
-    Materias m2(13,"0241719", 8.6,9.2,10,9.4);
-    Materias m3(50,"0241720", 8.7,10,10,9.3);
-    Materias m4(2,"0241721",7.6,8.4,10,7.4);
-    Materias m5(33,"0241722",10,7.1,7.5,10);
-    Materias m6(80,"0241723",8.5,9,10,7.8);
-    Materias m7(27,"0241724",10,9.4,8,7.3);
-    Materias m8 (40,"0241725",7.8,7.6,8,9);
-    Materias m9 (60,"0241726",8.9,8.5,9.2,9.3);
-    Materias m10 (59,"0241727",9.4,9.9,7.2,10);
+    Materias m1(1,  "0241718", 10, 8.1 , 10, 9.3);
+    Materias m2(13, "0241719", 8.6, 9.2, 10, 9.4);
+    Materias m3(50, "0241720", 8.7, 10, 10, 9.3);
+    Materias m4(2, "0241721", 7.6, 8.4, 10, 7.4);
+    Materias m5(33, "0241722", 10, 7.1, 7.5, 10);
+    Materias m6(80, "0241723", 8.5, 9, 10, 7.8);
+    Materias m7(27, "0241724", 10, 9.4, 8, 7.3);
+    Materias m8 (40, "0241725", 7.8, 7.6, 8, 9);
+    Materias m9 (60, "0241726", 8.9, 8.5, 9.2, 9.3);
+    Materias m10 (59, "0241727", 9.4, 9.9, 7.2, 10);
 
     Materia PA(1,"PA1","ProgramacionAvanzada");
     Materia POO(2,"POO","ProgramacionOrientadaObjeto");

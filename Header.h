@@ -126,6 +126,22 @@ void outputLine(ostream& output, const Materias& record) {
         << setw(5) << record.getc4() << endl;
 }
 
+void outputProm(ostream& output, const Materias& record) {
+    
+    output << left <<setw(9) << "ID";
+	output << setw(5)<<"PA1";
+	output << setw(5)<<"POO";
+	output << setw(5)<<"MAT";
+	output << setw(5) << "ING"
+    << endl;
+	
+    output << left << setw(9) << record.getMatricula()
+        << setw(5) << record.getc1()
+        << setw(5) << record.getc2()
+        << setw(5) << record.getc3()
+        << setw(5) << record.getc4() << endl;
+}
+
 int CalificacionesIndividuales(vector<Materias> list){
 
     ifstream file{"materias.dat", ios::in | ios::binary};
@@ -157,6 +173,34 @@ int CalificacionesIndividuales(vector<Materias> list){
 }
 
 int Promedio(vector<Materias> list){
+
+    ifstream file{"materias.dat", ios::in | ios::binary};
+
+    if (!file) {
+        cerr << "File could not be opened." << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    int op, flag;
+    cout << "Deme el indice" << endl;
+	cin>> op;
+    flag = 0;
+		
+    for( auto i : list)
+    {
+        if(i.getIndice() == op){
+            file.seekg((op-1)*sizeof(Materias));
+            file.read(reinterpret_cast<char*>(&i),sizeof(Materias));
+            outputProm(cout,i);  
+            flag = 1;  
+        }
+    }
+    if(flag == 0){
+        cout << "Eror, ese estudiante no existe" << endl;
+    }
+
+    return 0;
+    
 
 
 }
