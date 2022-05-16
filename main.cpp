@@ -7,9 +7,14 @@ int main(){
     IndiceEstudiante s2(2,"0241719","LizbethTrujilloSalgado");
     IndiceEstudiante s3(50,"0241720","ArianaRodriguezCastaneda");
 
-    vector<IndiceEstudiante> list = {s1,s2,s3};
+    Materias m1(1, "0241718", 10,10,10,10);
+    Materias m2(2,"0241719", 5,5,5,5);
+    Materias m3(50,"0241720", 8,8,8,8);
 
-    menu(list);
+    vector<IndiceEstudiante> i_list = {s1,s2,s3};
+    vector<Materias> m_list = {m1,m2,m3};
+
+    menu(i_list, m_list);
 
 
     return 0;

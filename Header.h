@@ -1,12 +1,5 @@
 #include "MainHeader.h"
 
-
-double califRand(double fMin, double fMax)
-{
-    double f = (double)rand() / RAND_MAX;
-    return fMin + f * (fMax - fMin);
-}
-
 /*int menu(){
     int x;
     cout << "1. Ver Personas" << endl;
@@ -77,7 +70,7 @@ int MakeIndiceFile(vector<IndiceEstudiante> list){
     return 0;
 }
 
-/*int MakeMateriasFile(){
+int MakeMateriasFile(vector<Materias> list){
 
     fstream outFile{"materias.dat", ios::in | ios::out | ios::binary};
 
@@ -86,12 +79,6 @@ int MakeIndiceFile(vector<IndiceEstudiante> list){
         exit(EXIT_FAILURE);
     }
 
-    Materias s1(1,"0241718",10,9.5,8.8,7.4);
-    Materias s2(2,"0241718",10,9.5,8.8,7.4);
-    Materias s3(50,"0241718",10,9.5,8.8,7.4);
-
-    vector<Materias> list = {s1,s2,s3};
-
     for( auto i : list ){
         outFile.seekp( (i.getIndice() - 1) * sizeof(Materias) );
         outFile.write( reinterpret_cast<const char*>(&i), sizeof(Materias) );
@@ -99,11 +86,6 @@ int MakeIndiceFile(vector<IndiceEstudiante> list){
     
     return 0;
 }
-*/
-
-
-
-
 
 //Make empty files:
 
@@ -132,10 +114,11 @@ int MakeEmptyMateriasFile(){
         cerr << "File could not be opened." << endl;
         exit(EXIT_FAILURE);
     }
-    IndiceEstudiante out;
+    
+    Materias out;
 
     for(int i=0; i<100; ++i){
-        file.write(reinterpret_cast<const char*>(&out), sizeof(IndiceEstudiante));
+        file.write(reinterpret_cast<const char*>(&out), sizeof(Materias));
     }
 
     return 0;
@@ -170,7 +153,7 @@ int Calificaciones(){
 }
 
 
-void menu(vector<IndiceEstudiante> list){
+int menu(vector<IndiceEstudiante> list, vector<Materias> materias){
 
     int op;
     bool running = true;
@@ -191,19 +174,22 @@ void menu(vector<IndiceEstudiante> list){
         case 1:
             system("cls");
             MakeEmptyIndiceFile();
+            MakeEmptyMateriasFile();
+            MakeEmptyMateriaFile();
             cout << "Creando archivos..." << endl;
             cout << "Archivos creados, llenado archivos..." << endl;
             MakeIndiceFile(list);
+            MakeMateriasFile(materias);
             cout << "Archivos llenados con exito" << endl;
             break;
         case 2:
-            MakeEmptyIndiceFile();
+            
             break;
         case 3:
-            MakeEmptyIndiceFile();
+            
             break;
         case 4:
-            MakeEmptyIndiceFile();
+            
             break;
         case 5:
             running = false;
@@ -213,6 +199,8 @@ void menu(vector<IndiceEstudiante> list){
             break;
         }
     }
-
+    
+    
+    return 0;
 }
 
