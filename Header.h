@@ -1,6 +1,17 @@
+//Incluimos el MainHeader.h, que es donde están las 3 clases necesarias para el código
+
 #include "MainHeader.h"
 
+
 //Make empty files:
+
+    //Creamos los archivos: "indice.dat","materias.dat" y "materia.dat" . Decimos que son vacíos pero en realidad no lo son, tienen los atributos predeterminados de las respectivas clases 
+    //para que, con la función de Make(archivo)File() pueda llenarlos respecto al tamaño de cada atributo.
+
+    //Las funciones lo primero que hacen, es crear un objeto ofstream para que pueda escrirbir sobre el archivo, si el archivo no se puede abrir, manda la excepción o error de que
+    //no se pudo abrir, posterior a esto, crea, en el caso de Indice y Materias, 100 records, en el caso de Materia, 4 records; que son los lugares predeterminados que incluye el archivo, 
+    //para que luego sean reemplazados por datos de estudiantes reales.
+
 
 int MakeEmptyIndiceFile(){
 
@@ -57,6 +68,10 @@ int MakeEmptyMateriaFile(){
 
 //Make files:
 
+    //Cada función, primero con un objeto fstream, lee el archivo correspondiente, para poder escribir sobre él en las posiciones que indique el índice, pues es nuestro valor
+    //auxilar para saber dónde está ubicado cada alumno en los archivos, en el caso de Materia, para saber en qué posición se encuentra el nombre y clave de la materia. Dichas posiciones
+    //fueron creadas en las funciones de MakeEmptyFile.
+
 int MakeIndiceFile(vector<IndiceEstudiante> list){
 
     fstream outFile{"indice.dat", ios::in | ios::out | ios::binary};
@@ -108,7 +123,12 @@ int MakeMateriaFile(vector<Materia> list){
     return 0;
 }
 
-//Read files:
+
+//Calculate Average:
+
+    //La función calculateProm() recibe un objeto de tipo Materia por referencia, que utilizará para guardar cada calificación de dicho en diferentes variables 
+    //de tipo double, que posterior a esto, calcularán el promedio de ese alumno.
+
 double calculateProm(const Materias& student){
 
     double prom;
@@ -123,6 +143,12 @@ double calculateProm(const Materias& student){
     return prom;
 
 }
+
+//output functions:
+
+    //Las dunciones outputx() recibien por referencia diferentes objetos de las clases Materias e IndiceEstudiante para poder imprimir en consola, los datos del
+    //alumno que se introduzca. Mediante funciones como set(w), le damos un formato en consola.
+
 
 void outputLine(ostream& output, const Materias& record, const IndiceEstudiante& list) {
     
@@ -152,6 +178,22 @@ void outputProm(ostream& output, const Materias& record, const IndiceEstudiante&
         << setw(20) << list.getMatricula()
         << setw(5) << calculateProm(record) << endl;
 }
+
+//Califcaciones por Persona:
+
+    //La función CalificacionesIndividuales() recibe dos vecotres, uno de tipo IndiceEstudiante y otro de tipo Materias.
+    //Primero crea dos objetos de tipo ifstream que le servirá para leer dos archivos, en este caso, el de materias.dat e indice.dat
+    //Si no puede abrir los archivos, manda diferentes errores, dependiendo de cuál no se haya podido abrir.
+    //Posterior a este, introducimos el indice que el estudiante escogió, que utilizará el método para, mediante 2 for's, posicionarse en el índice correcto donde se encuentra
+    //el alumno en los dos archivos, mediante la función seekg(), a esta última le pasamos la posición "op-1" multiplicada por el tamaño de la clase IndiceEstudiante, hacemos lo mismo
+    //para el segundo archivo, donde se encuentran los demás datos; con el mismo procedimiento.
+
+    //Una vez que se coloca en la posición, lee los datos reinterpretándolos en tipo char* (cadena de caractéres), en el tamaño de sus respectivas
+    //clases. Luego, con la función que ya habíamos defido de output, imprime en consola el estudiante hayado.
+
+    //Los for's funcionan de la siguiente forma:
+        //Para cada item en las respectivas listas, de cada clase, va a buscar el indice, si lo obtiene, hace lo ya mencionado, y cambiamos el valor de flag, que nos indicará
+        //si el estudiante fue hayado, en caso de que este valor no se modifique, significa que no fue hayado, por lo que en otro if, introducimos el error.
 
 int CalificacionesIndividuales(vector<IndiceEstudiante> list2,vector<Materias> list){
 
@@ -198,6 +240,13 @@ int CalificacionesIndividuales(vector<IndiceEstudiante> list2,vector<Materias> l
     return 0;
 }
 
+//Promedio del alumno:
+
+    //La función Promedio() va a recibir igualmente un vector de cada tipo de clase (Indice Estudiante y Materias). El funcionamiento de esta función
+    //es muy similar al de CalificacionesIndividuales(), con la diferencia de que, si encuentra al estudiante, llama a la función outputProm(), que recibe al 
+    //alumno hayado en los diferentes archivos para imprimirlo en consola.
+
+
 int Promedio(vector<IndiceEstudiante> list2, vector<Materias> list){
 
     ifstream file1{"materias.dat", ios::in | ios::binary};
@@ -242,6 +291,20 @@ int Promedio(vector<IndiceEstudiante> list2, vector<Materias> list){
 
 }
 
+//Alumnos más altos por materia:
+    //La función CalifCompair() recibe dos vectores, uno de tipo IndiceEstudiante y otro de tipo Materias. Crea diferentes variables donde, según el tipo,
+    //guardará los datos del alumno más alto por persona.
+    
+    //las variables de tipo double se inicializan en un valor negativo exagerado para que, mediante los ifs dentro de los dos fors, se pueda actualizar el valor de la calificación 
+    //más alta en dicha.
+
+    //Los for's funcionan de la siguiente forma:
+        //Para cada item en las listas, que son los vectores de cada clase; recorre los objetos de dicha, y mediante los ifs para cada materia, que, si la calificación es mayor a nuestro
+        //valor negativo exagerado y si el indice entre las dos listas coincide, guardarmos las variables de cada materia con sus datos, así, ese bloque de código una vez que termine
+        //de recorrer los vectores, guardará los datos del alumno más alto por materia en las respectivas variables que creamos antes.
+
+    //Una vez que guardamos los datos del alumno más alto por materia en las variables, mediante un pequeño bloque de código donde asignamos formatos, imprimimos todos
+    //esos datos, especificando cada uno de ellos.
 
 int CalifCompair(vector<IndiceEstudiante> list2,vector<Materias> list){
 	
@@ -268,22 +331,21 @@ int CalifCompair(vector<IndiceEstudiante> list2,vector<Materias> list){
                 maxpan = j.getName();
                 maxpaid = i.getMatricula();
             }
-			 if((i.getc2())>maxpoo && j.getIndice() == i.getIndice()){ 
+			if((i.getc2())>maxpoo && j.getIndice() == i.getIndice()){ 
                 maxpoo = i.getc2();
                 maxpoon = j.getName();
                 maxpooid = i.getMatricula();
             }
-			 if((i.getc3())>maxmat && j.getIndice() == i.getIndice()){ 
+			if((i.getc3())>maxmat && j.getIndice() == i.getIndice()){ 
                 maxmat = i.getc3();
                 maxmatn = j.getName();
                 maxmatid = i.getMatricula();
             }
-			 if((i.getc4())>maxing && j.getIndice() == i.getIndice()){ 
+			if((i.getc4())>maxing && j.getIndice() == i.getIndice()){ 
                 maxing = i.getc4();
                 maxingn=j.getName();
                 maxingid = i.getMatricula();
             }
-
         }
     }
 
@@ -293,13 +355,11 @@ int CalifCompair(vector<IndiceEstudiante> list2,vector<Materias> list){
     cout << left << setw(20) << "Matematicas" << setw(20) << maxmatn <<  setw(20) << maxmatid << setw(20) << maxmat << endl;
     cout << left << setw(20) << "Ingles" << setw(20) << maxingn <<  setw(20) << maxingid << setw(20) << maxing << endl;
 
-
-
-
-
 }
 
 //Main menu:
+
+    //La función menu() recibe un vector de cada clase de nuesro MainHeader.h, 
 
 int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materia> materia){
 
