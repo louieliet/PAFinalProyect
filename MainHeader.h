@@ -83,3 +83,40 @@ private:
 
 };
 
+class Materia {
+public:
+	Materia(int indice = 65536, const string& id = "NON", const string& name="NONE") 
+	{
+		this->indice = indice;
+		setClave(id);
+		setNombre(name);
+		
+	}
+	void setClave(const string& clave) {
+
+		size_t length{ clave.size() };
+		length = (length < 4 ? length : 3);
+		clave.copy(this->clave, length);
+		this->clave[length] = '\0'; 
+
+	}
+	void setNombre(const string& nombre) {
+
+		size_t length{ nombre.size() };
+		length = (length < 15 ? length : 14);
+		nombre.copy(this->nombre, length);
+		this->nombre[length] = '\0'; 
+
+	}
+
+	int getIndice() const {return indice;}
+	
+private:
+	int indice;
+	char clave[4];
+	char nombre[15];
+
+};
+
+
+

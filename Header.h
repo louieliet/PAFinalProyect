@@ -87,6 +87,24 @@ int MakeMateriasFile(vector<Materias> list){
     return 0;
 }
 
+int MakeMateriaFile(vector<Materia> list){
+
+    fstream outFile{"materia.dat", ios::in | ios::out | ios::binary};
+
+    if(!outFile){
+        cerr << "File could not be opened." << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    for( auto i : list ){
+        outFile.seekp( (i.getIndice() - 1) * sizeof(Materia) );
+        outFile.write( reinterpret_cast<const char*>(&i), sizeof(Materia) );
+    }
+    
+    return 0;
+}
+
+
 //Make empty files:
 
 int MakeEmptyIndiceFile(){
@@ -132,10 +150,11 @@ int MakeEmptyMateriaFile(){
         cerr << "File could not be opened." << endl;
         exit(EXIT_FAILURE);
     }
-    IndiceEstudiante out;
 
-    for(int i=0; i<100; ++i){
-        file.write(reinterpret_cast<const char*>(&out), sizeof(IndiceEstudiante));
+    Materia out;
+
+    for(int i=0; i<4; ++i){
+        file.write(reinterpret_cast<const char*>(&out), sizeof(Materia));
     }
 
     return 0;
@@ -153,7 +172,7 @@ int Calificaciones(){
 }
 
 
-int menu(vector<IndiceEstudiante> list, vector<Materias> materias){
+int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materia> materia){
 
     int op;
     bool running = true;
@@ -180,6 +199,7 @@ int menu(vector<IndiceEstudiante> list, vector<Materias> materias){
             cout << "Archivos creados, llenado archivos..." << endl;
             MakeIndiceFile(list);
             MakeMateriasFile(materias);
+            //MakeMateriaFile(materia);
             cout << "Archivos llenados con exito" << endl;
             break;
         case 2:
