@@ -109,6 +109,20 @@ int MakeMateriaFile(vector<Materia> list){
 }
 
 //Read files:
+double calculateProm(const Materias& student){
+
+    double prom;
+
+    double c1 = student.getc1();
+    double c2 = student.getc2();
+    double c3 = student.getc3();
+    double c4= student.getc4();
+
+    prom = (c1+c2+c3+c4)/4;
+
+    return prom;
+
+}
 
 void outputLine(ostream& output, const Materias& record) {
     
@@ -129,18 +143,12 @@ void outputLine(ostream& output, const Materias& record) {
 void outputProm(ostream& output, const Materias& record) {
     
     output << left <<setw(9) << "ID";
-	output << setw(5)<<"PA1";
-	output << setw(5)<<"POO";
-	output << setw(5)<<"MAT";
-	output << setw(5) << "ING"
-    << endl;
+	output << setw(5)<< "PROMEDIO" << endl;
 	
     output << left << setw(9) << record.getMatricula()
-        << setw(5) << record.getc1()
-        << setw(5) << record.getc2()
-        << setw(5) << record.getc3()
-        << setw(5) << record.getc4() << endl;
+        << setw(5) << calculateProm(record) << endl;
 }
+
 
 int CalificacionesIndividuales(vector<Materias> list){
 
@@ -245,7 +253,6 @@ int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materi
             Promedio(materias);
             break;
         case 4:
-            
             break;
         case 5:
             running = false;
