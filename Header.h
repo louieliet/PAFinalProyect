@@ -199,7 +199,7 @@ int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materi
             cout << "Archivos creados, llenado archivos..." << endl;
             MakeIndiceFile(list);
             MakeMateriasFile(materias);
-            //MakeMateriaFile(materia);
+            MakeMateriaFile(materia);
             cout << "Archivos llenados con exito" << endl;
             break;
         case 2:

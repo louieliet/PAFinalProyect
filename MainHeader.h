@@ -85,7 +85,7 @@ private:
 
 class Materia {
 public:
-	Materia(int indice = 65536, const string& id = "NON", const string& name="NONE") 
+	Materia(int indice = 65536, const string& id = "NON", const string& name = "NONE") 
 	{
 		this->indice = indice;
 		setClave(id);
