@@ -1,11 +1,26 @@
+//MainHeader.h -> En este archivo estarán únicamente las clases que utilizaremos
+
+//Incluimos las librerías de c++ que utilizaremos
+
 #include <iostream>
 #include <fstream>  
 #include <iomanip>
 #include <cstdlib>
 #include <string>
 #include <vector>
-#include <map>
+#include <wchar.h>
+#include <locale.h>
+
 using namespace std;
+
+//IndiceEstudiante:
+
+	//La clase IndiceEstudiante tendrá 3 atributos, que serán el indice del alumno que él escoja, su id y su nombre.
+	//A su vez, tendrá 5 métodos y su constructor, que por predeterminado crea un alumno con indice 65536, id 1234567 y un nombre vacío, esto
+	//nos ayudará a detectar alumnos que no existan o estén vaciós en el archivo de indice.dat
+
+	//Las funciones set convierten los datos strings que nosotros introducimos en el constructor; en char arrays, es decir, en forma de cadenas de caractéres.
+	//Las funciones get nos dan lo que vale cada cosa pedida, ya sea el índice, el id o el nombre.
 
 class IndiceEstudiante {
 public:
@@ -43,6 +58,18 @@ private:
 	char name[20];
 };
 
+//Materias:
+
+	//La clase Materias tendrá 10 atributos, que nos servirán para establecer el índice y id del alumno, así como las claves de las materias y la calificación
+	//de estas del alumno.
+
+	//A su vez, tendrá 7 funciones y su constrcutor, que de igual forma, establecemos todos los parámetros en datos fijos que para nosotros serán los predeterminados para identificar
+	//alumnos vacíos en los archivos
+
+	//La función set tiene el mismo objetivo que los setters de IndiceEstudiante.
+	//Las funciones get tienen el mismo objetivo que los getters de IndiceEstudiante.
+
+
 class Materias {
 public:
 	Materias(int indice = 65536, const string& matricula = "1234567", const double pa = 0.0, const double poo = 0.0, const double mat = 0.0, const double ing=0.0) {
@@ -78,7 +105,7 @@ private:
 	double calif1;
 	char c2[4]= "POO";
 	double calif2;
-	char c3[4]= "Mat";
+	char c3[4]= "MAT";
 	double calif3;
 	char c4[4]= "ING";
 	double calif4;
@@ -86,6 +113,11 @@ private:
 
 };
 
+//Materia:
+	//La clase materia tendrá 3 atributos, que serán el indice de dónde se encuentra la materia en el archivo, la clave de la materia y su nombre completo.
+	//De igual forma, definimos predeterminados en el constructor
+
+	//Los setters y getters tienen el mimo objetivo que las dos anteriores clases.
 class Materia {
 public:
 	Materia(int indice = 65536, const string& id = "NON", const string& name = "NONE") 

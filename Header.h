@@ -1,5 +1,8 @@
-//Incluimos el MainHeader.h, que es donde están las 3 clases necesarias para el código
+//Header.h -> En este archivo estarán todas nuestras funciones que utilizaremos para que el código corra
+//de manera óptima.
 
+
+//Incluimos el MainHeader.h, que es donde están las 3 clases necesarias para el código.
 #include "MainHeader.h"
 
 
@@ -122,7 +125,6 @@ int MakeMateriaFile(vector<Materia> list){
     
     return 0;
 }
-
 
 //Calculate Average:
 
@@ -359,7 +361,9 @@ int CalifCompair(vector<IndiceEstudiante> list2,vector<Materias> list){
 
 //Main menu:
 
-    //La función menu() recibe un vector de cada clase de nuesro MainHeader.h, 
+    //La función menu() recibe un vector de cada clase de nuesro MainHeader.h, que le servirán para poder pasar todos los datos de los objetos que incluyan dichos, a las funciones correspondientes.
+    //La finalidad de menu() es imprimir en consola un menú donde el usuario pueda decidir la operación que desea hacer, mediante una leída de la opción que desea, un switch
+    //manda a llamar a la fución de la opción que decidió el usuario.
 
 int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materia> materia){
 
@@ -410,6 +414,7 @@ int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materi
             break;
         
         default:
+            cout << "Introduzca una opción válida" << endl;
             break;
         }
     }
