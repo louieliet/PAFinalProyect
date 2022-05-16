@@ -140,12 +140,12 @@ void outputLine(ostream& output, const Materias& record, const IndiceEstudiante&
         << setw(5) << record.getc4() << endl;
 }
 
-void outputProm(ostream& output, const Materias& record) {
+void outputProm(ostream& output, const Materias& record, const IndiceEstudiante& list) {
     
     output << left <<setw(20) << "Nombre";
 	output << setw(5)<< "PROMEDIO" << endl;
 	
-    output << left << setw(20) << record.getMatricula()
+    output << left << setw(20) << list.getName()
         << setw(5) << calculateProm(record) << endl;
 }
 
@@ -194,11 +194,17 @@ int CalificacionesIndividuales(vector<IndiceEstudiante> list2,vector<Materias> l
     return 0;
 }
 
-int Promedio(vector<Materias> list){
+int Promedio(vector<IndiceEstudiante> list2, vector<Materias> list){
 
-    ifstream file{"materias.dat", ios::in | ios::binary};
+    ifstream file1{"materias.dat", ios::in | ios::binary};
+    ifstream file2{"indice.dat", ios::in | ios::binary};
 
-    if (!file) {
+    if (!file1) {
+        cerr << "File could not be opened." << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    if (!file2) {
         cerr << "File could not be opened." << endl;
         exit(EXIT_FAILURE);
     }
@@ -208,22 +214,27 @@ int Promedio(vector<Materias> list){
 	cin>> op;
     flag = 0;
 		
-    for( auto i : list)
-    {
-        if(i.getIndice() == op){
-            file.seekg((op-1)*sizeof(Materias));
-            file.read(reinterpret_cast<char*>(&i),sizeof(Materias));
-            outputProm(cout,i);  
-            flag = 1;  
+    for( auto j : list2 ){
+
+        for( auto i : list){
+            if(i.getIndice() == op){
+                file2.seekg((op-1)*sizeof(IndiceEstudiante));
+                file1.seekg((op-1)*sizeof(Materias));
+                file1.read(reinterpret_cast<char*>(&i),sizeof(Materias));
+                file2.read(reinterpret_cast<char*>(&j),sizeof(IndiceEstudiante));
+                outputProm(cout,i,j);  
+                flag = 1;  
+            }
         }
-    }
-    if(flag == 0){
-        cout << "Eror, ese estudiante no existe" << endl;
+        if(flag == 0){
+            cout << "Eror, ese estudiante no existe" << endl;
+        }
+        if(flag = 1){
+            break;
+        }
     }
 
     return 0;
-    
-
 
 }
 
@@ -269,7 +280,7 @@ int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materi
             break;
         case 3:
             system("cls");
-            Promedio(materias);
+            Promedio(list,materias);
             break;
         case 4:
             break;
