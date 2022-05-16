@@ -127,6 +127,7 @@ double calculateProm(const Materias& student){
 void outputLine(ostream& output, const Materias& record, const IndiceEstudiante& list) {
     
     output << left <<setw(20) << "Nombre";
+    output << left <<setw(20) << "ID";
 	output << setw(5)<<"PA1";
 	output << setw(5)<<"POO";
 	output << setw(5)<<"MAT";
@@ -134,6 +135,7 @@ void outputLine(ostream& output, const Materias& record, const IndiceEstudiante&
     << endl;
 	
     output << left << setw(20) << list.getName()
+        << setw(20) << record.getMatricula()
         << setw(5) << record.getc1()
         << setw(5) << record.getc2()
         << setw(5) << record.getc3()
@@ -143,9 +145,11 @@ void outputLine(ostream& output, const Materias& record, const IndiceEstudiante&
 void outputProm(ostream& output, const Materias& record, const IndiceEstudiante& list) {
     
     output << left <<setw(20) << "Nombre";
+    output << left <<setw(20) << "Matricula";
 	output << setw(5)<< "PROMEDIO" << endl;
 	
     output << left << setw(20) << list.getName()
+        << setw(20) << list.getMatricula()
         << setw(5) << calculateProm(record) << endl;
 }
 
@@ -245,10 +249,16 @@ int CalifCompair(vector<IndiceEstudiante> list2,vector<Materias> list){
 	double maxpoo = -999;
 	double maxmat = -999;
 	double maxing = -999;
+
     string maxpan = " ";
 	string maxpoon = " ";
 	string maxmatn = " ";
 	string maxingn = " ";
+
+    string maxpaid ;
+	string maxpooid;
+	string maxmatid;
+	string maxingid;
    
 
     for( auto i : list){
@@ -256,28 +266,32 @@ int CalifCompair(vector<IndiceEstudiante> list2,vector<Materias> list){
             if((i.getc1())>maxpa && j.getIndice() == i.getIndice()){ 
                 maxpa = i.getc1();
                 maxpan = j.getName();
+                maxpaid = i.getMatricula();
             }
 			 if((i.getc2())>maxpoo && j.getIndice() == i.getIndice()){ 
                 maxpoo = i.getc2();
                 maxpoon = j.getName();
+                maxpooid = i.getMatricula();
             }
 			 if((i.getc3())>maxmat && j.getIndice() == i.getIndice()){ 
                 maxmat = i.getc3();
                 maxmatn = j.getName();
+                maxmatid = i.getMatricula();
             }
 			 if((i.getc4())>maxing && j.getIndice() == i.getIndice()){ 
                 maxing = i.getc4();
                 maxingn=j.getName();
+                maxingid = i.getMatricula();
             }
 
         }
     }
 
-    cout << left << setw(20) << "Materia" << setw(20) << "Nombre" <<  setw(20) << "Calificacion" << endl;
-    cout << left << setw(20) << "ProgramacionAv" << setw(20) << maxpan <<  setw(20) << maxpa << endl;
-    cout << left << setw(20) << "ProgramacionOr" << setw(20) << maxpoon <<  setw(20) << maxpoo << endl;
-    cout << left << setw(20) << "Matematicas" << setw(20) << maxmatn <<  setw(20) << maxmat << endl;
-    cout << left << setw(20) << "Ingles" << setw(20) << maxingn <<  setw(20) << maxing << endl;
+    cout << left << setw(20) << "Materia" << setw(20) << "Nombre" << setw(20) << "ID" << setw(20) << "Calificacion" << endl;
+    cout << left << setw(20) << "ProgramacionAv" << setw(20) << maxpan <<  setw(20) << maxpaid << setw(20) << maxpa << endl;
+    cout << left << setw(20) << "ProgramacionOr" << setw(20) << maxpoon <<  setw(20) << maxpooid << setw(20) << maxpoo << endl;
+    cout << left << setw(20) << "Matematicas" << setw(20) << maxmatn <<  setw(20) << maxmatid << setw(20) << maxmat << endl;
+    cout << left << setw(20) << "Ingles" << setw(20) << maxingn <<  setw(20) << maxingid << setw(20) << maxing << endl;
 
 
 

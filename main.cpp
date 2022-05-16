@@ -13,7 +13,7 @@ int main(){
     IndiceEstudiante s9(60, "0241726", "Juan Pablo");
     IndiceEstudiante s10(59, "0241727", "Carlos");
     
-    Materias m1(   1,     "0241718",    7.5,    8.1 ,   6,      9.3);
+    Materias m1(   1,     "0241718",    7.5,    8.1 ,   6,      10);
     Materias m2(   13,    "0241719",    8.6,    9.2,    8.2,    9.4);
     Materias m3(   50,    "0241720",    8.7,    9.2,    6.9,    9.3);
     Materias m4(   2,     "0241721",    7.6,    8.4,    8.7,    7.4);
