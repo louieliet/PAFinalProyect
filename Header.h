@@ -238,59 +238,51 @@ int Promedio(vector<IndiceEstudiante> list2, vector<Materias> list){
 
 }
 
-void outputBestotBest(ostream& output, const Materias& record, const IndiceEstudiante& list, const Materia& materia){
 
-    output << left << setw(15) << "Materia";
-	output << setw(5)<< " Mejor Calificacion";
-    output << setw(20) << "Nombre"  << endl;
+int CalifCompair(vector<IndiceEstudiante> list2,vector<Materias> list){
 	
+    double maxpa  = -999;
+	double maxpoo = -999;
+	double maxmat = -999;
+	double maxing = -999;
+    string maxpan = " ";
+	string maxpoon = " ";
+	string maxmatn = " ";
+	string maxingn = " ";
+   
 
-}
+    for( auto i : list){
+        for ( auto j : list2){
+            if((i.getc1())>maxpa && j.getIndice() == i.getIndice()){ 
+                maxpa = i.getc1();
+                maxpan = j.getName();
+            }
+			 if((i.getc2())>maxpoo && j.getIndice() == i.getIndice()){ 
+                maxpoo = i.getc2();
+                maxpoon = j.getName();
+            }
+			 if((i.getc3())>maxmat && j.getIndice() == i.getIndice()){ 
+                maxmat = i.getc3();
+                maxmatn = j.getName();
+            }
+			 if((i.getc4())>maxing && j.getIndice() == i.getIndice()){ 
+                maxing = i.getc4();
+                maxingn=j.getName();
+            }
 
-int CalifCompair(vector<IndiceEstudiante> list2,vector<Materias> list, vector<Materia> list3){
-
-    ifstream file1{"materias.dat", ios::in | ios::binary};
-    ifstream file2{"indice.dat", ios::in | ios::binary};
-
-    if (!file1) {
-        cerr << "File could not be opened." << endl;
-        exit(EXIT_FAILURE);
+        }
     }
 
-    if (!file2) {
-        cerr << "File could not be opened." << endl;
-        exit(EXIT_FAILURE);
-    }
-	
-    double maxpa = -999;
-    double maxpoo = -999;
-    double maxmat = -999;
-    double maxing = -999;
+    cout << left << setw(20) << "Materia" << setw(20) << "Nombre" <<  setw(20) << "Calificacion" << endl;
+    cout << left << setw(20) << "ProgramacionAv" << setw(20) << maxpan <<  setw(20) << maxpa << endl;
+    cout << left << setw(20) << "ProgramacionOr" << setw(20) << maxpoon <<  setw(20) << maxpoo << endl;
+    cout << left << setw(20) << "Matematicas" << setw(20) << maxmatn <<  setw(20) << maxmat << endl;
+    cout << left << setw(20) << "Ingles" << setw(20) << maxingn <<  setw(20) << maxing << endl;
 
-    for( auto i : list )
-    {
-        if((i.getc1())>maxpa)
-        {
-            maxpa = i.getc1();
-        }
-		if ((i.getc2())>maxpoo)
-		{
-			maxpoo= i.getc2();
-		}
-		 if((i.getc3())>maxmat)
-        {
-            maxmat = i.getc3();
-        }
-		 if((i.getc4())>maxing)
-        {
-            maxing = i.getc4();
-        }
-		
-    }
-    cout << maxpa << endl;
-    cout << maxpoo << endl;
-    cout << maxmat << endl;
-    cout << maxing << endl;
+
+
+
+
 }
 
 //Main menu:
@@ -335,7 +327,7 @@ int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materi
             break;
         case 4:
 			system("cls");
-			CalifCompair(list,materias,materia);
+			CalifCompair(list,materias);
             break;
         case 5:
             running = false;
