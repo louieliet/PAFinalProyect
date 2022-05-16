@@ -294,6 +294,8 @@ int menu(vector<IndiceEstudiante> list, vector<Materias> materias, vector<Materi
 
     while(running){
 
+        system("Pause");
+        system("cls");
         cout << setw(20) << "-- Menu --" << endl;
         cout <<  "1. Crear los archivos " << endl;
         cout <<  "2. Calificaciones individuales " << endl;
