@@ -26,8 +26,9 @@ int MakeEmptyIndiceFile(){
     }
     IndiceEstudiante out;
 
-    for(int i=0; i<100; ++i){
+    for(int i=0; i<MAX_STUDENTS; ++i){
         file.write(reinterpret_cast<const char*>(&out), sizeof(IndiceEstudiante));
+
     }
 
     return 0;
@@ -44,7 +45,7 @@ int MakeEmptyMateriasFile(){
     
     Materias out;
 
-    for(int i=0; i<100; ++i){
+    for(int i=0; i<MAX_STUDENTS; ++i){
         file.write(reinterpret_cast<const char*>(&out), sizeof(Materias));
     }
 
@@ -62,7 +63,7 @@ int MakeEmptyMateriaFile(){
 
     Materia out;
 
-    for(int i=0; i<4; ++i){
+    for(int i=0; i<MAX_CLASSES; ++i){
         file.write(reinterpret_cast<const char*>(&out), sizeof(Materia));
     }
 
@@ -84,8 +85,8 @@ int MakeIndiceFile(vector<IndiceEstudiante> list){
         exit(EXIT_FAILURE);
     }
 
-    for( auto i : list ){
-        outFile.seekp( (i.getIndice() - 1) * sizeof(IndiceEstudiante) );
+    for(int i = 0; i < MAX_STUDENTS; i++){
+        outFile.seekp((list[i].getIndice()-1) * sizeof(IndiceEstudiante));
         outFile.write( reinterpret_cast<const char*>(&i), sizeof(IndiceEstudiante) );
     }
     

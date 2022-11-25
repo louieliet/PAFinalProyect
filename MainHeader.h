@@ -11,7 +11,11 @@
 #include <wchar.h>
 #include <locale.h>
 
+#define MAX_STUDENTS 100
+#define MAX_CLASSES 4
+
 using namespace std;
+
 
 //IndiceEstudiante:
 
@@ -45,6 +49,8 @@ public:
 		length = (length < 20 ? length : 19);
 		name.copy(this->name, length);
 		this->name[length] = '\0'; 
+
+
 
 	}
 	
